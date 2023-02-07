@@ -57,29 +57,84 @@
             <!-- dan seterusnya -->
         </div>
         <div class="form-group">
-            <div class="input-group ">
+            <h3>1080</h3>
+            <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input type="checkbox" aria-label="Checkbox for following text input">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="1080" name="quality1080">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd1080">
             </div>
-            <div class="input-group ">
+            <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input type="checkbox" aria-label="Checkbox for following text input">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="1080" name="quality1080">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb1080">
             </div>
-            <div class="input-group ">
+            <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text ">
-                        <input type="checkbox" aria-label="Checkbox for following text input">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="1080" name="quality1080">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg1080">
+            </div>
+        </div>
+        <div class="form-group">
+            <h3>720</h3>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="720" name="quality720">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd720">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="720" name="quality720">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb720">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="720" name="quality720">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg720">
+            </div>
+        </div>
+        <div class="form-group">
+            <h3>540</h3>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="540" name="quality540">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd540">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="540" name="quality540">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb540">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="540" name="quality540">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg540">
             </div>
         </div>
 

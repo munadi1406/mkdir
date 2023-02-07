@@ -19,17 +19,15 @@
     $dcry = base64_decode($salt_plain_id);
 
 
-    $query = "SELECT f.title, f.date, f.image, g.name FROM films f JOIN genre g ON f.film_id = g.id_films WHERE f.film_id = '$dcry'";
+    $query = "SELECT f.title, f.desc, f.date, f.image, g.name ,l.* FROM films f JOIN genre g ON f.film_id = g.id_films JOIN link l on f.film_id = l.film_id WHERE f.film_id = '$dcry' ";
     $result = mysqli_query($conn, $query);
 
     if (!$result) {
         echo "<script>alert('Error: " . $sql . "<br>" . mysqli_error($conn) . "');</script>";
         exit;
     }
-
     if (mysqli_num_rows($result) > 0) {
         $data = mysqli_fetch_assoc($result);
-
     ?>
         <img src="./db/images/<?php echo $data['image']; ?>" class="img">
         <div class="wrapper-movie-link">
@@ -41,38 +39,25 @@
                     <div class="years">Genre : <?php echo $data['name'] ?></div>
                 </div>
             </div>
-            <div class="container-link">
-                <div class="wrapper-card-link">
-                    <div class="wrapper-quality">
-                        <div>1080</div>
+            <?php
+            $query2 = "SELECT * FROM link where film_id = '$dcry' ";
+            $result2 = mysqli_query($conn, $query2);
+            ?>
+                <div class="container-link">
+            <?php while ($data = mysqli_fetch_assoc($result2)) { ?>
+                    <div class="wrapper-card-link">
+                        <div class="wrapper-quality">
+                            <div><?php echo $data['quality']?></div>                            
+                        </div>
+                        <div class="wrapper-link-quality">
+                            <a href="<?php echo $data['GD'] ?>">GD</a>
+                            <a href="<?php echo $data['UTB'] ?>">UTB</a>
+                            <a href="<?php echo $data['MG'] ?>">MG</a>
+
+                        </div>
                     </div>
-                    <div class="wrapper-link-quality">
-                        <a href="">GD</a>
-                        <a href="">UTB</a>
-                        <a href="">MG</a>
-                    </div>
+                    <?php } ?>
                 </div>
-                <div class="wrapper-card-link">
-                    <div class="wrapper-quality">
-                        <div>720</div>
-                    </div>
-                    <div class="wrapper-link-quality">
-                        <a href="">GD</a>
-                        <a href="">UTB</a>
-                        <a href="">MG</a>
-                    </div>
-                </div>
-                <div class="wrapper-card-link">
-                    <div class="wrapper-quality">
-                        <div>540</div>
-                    </div>
-                    <div class="wrapper-link-quality">
-                        <a href="">GD</a>
-                        <a href="">UTB</a>
-                        <a href="">MG</a>
-                    </div>
-                </div>
-            </div>
         </div>
     <?php
     } else {

@@ -115,7 +115,7 @@ nav {
         font-family: $font;
         color: $color4;
         font-weight: white;
-        font-size: 20px;
+        font-size: 16px;
       }
       .years {
         width: max-content;
@@ -173,7 +173,6 @@ nav {
 
     .container-link {
       margin-top: -20px;
-
       padding: 0px 20px;
       .wrapper-card-link {
         min-height: 70px;
@@ -181,7 +180,6 @@ nav {
         margin: 10px;
         border-radius: 10px;
         background-color: $color5;
-        // box-shadow: 2px -2px 20px black;
         border-top: 2px solid white;
 
         .wrapper-quality {

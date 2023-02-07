@@ -19,7 +19,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Id</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Input</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">desc</th>
@@ -28,6 +28,7 @@
                                 <th scope="col">Genre</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Image</th>
+                                <th scope="col">Link</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -39,18 +40,17 @@
                             if (!$conn) {
                                 die("Koneksi gagal: " . mysqli_connect_error());
                             }
-                            // Menjalankan query untuk mengambil data dari database
-                            $query = " select f.* ,g.* ,u.* from films f join genre g on f.film_id = g.id_films  join users u on f.id_users =  u.id_users  ORDER BY f.created_at DESC;";
+                            // users-films-genre
+                            $query = " select f.* ,g.* ,u.*  from films f join genre g on f.film_id = g.id_films  join users u on f.id_users =  u.id_users ORDER BY f.created_at DESC;";
                             $result = mysqli_query($conn, $query);
                             if (!$result) {
                                 die("Query gagal: " . mysqli_error($conn));
                             }
-                            // Menampilkan data dari hasil query
                             $i = 1;
                             while ($data = mysqli_fetch_assoc($result)) {
                             ?>
                                 <tr>
-                                    <th scope="row"><?php echo $i ?></th>
+                                    <td><?php echo $i ?></td>
                                     <td><?php echo $data['username']; ?></td>
                                     <td><?php echo $data['title']; ?></td>
                                     <td><?php echo $data['desc']; ?></td>
@@ -59,6 +59,23 @@
                                     <td><?php echo $data['name']; ?></td>
                                     <td><?php echo $data['status']; ?></td>
                                     <td><img src=".../../images/<?php echo $data['image']; ?>" width="50px"></td>
+                                    <td>
+                                        <?php
+                                        $id_film = $data['film_id'];
+                                        // loop link
+                                        $query2 = "SELECT * FROM link where film_id = '$id_film'";
+                                        $result2 = mysqli_query($conn, $query2);
+                                        ?>
+                                        <?php while ($data = mysqli_fetch_assoc($result2)) {    ?>
+                                            <div><?php echo $data['quality'] ?></div>
+                                            <div class="wrapper-link-post" style="display: flex;">
+                                                <a href="<?php echo $data['GD'] ?>" style="margin-right:5px ;padding:5px;" class="btn btn-primary ">GD</a>
+                                                <a href="<?php echo $data['UTB'] ?>" style="margin-right:5px;padding:5px;" class="btn btn-success">UTB</a>
+                                                <a href="<?php echo $data['MG'] ?>" style="padding:5px;" class="btn btn-danger">MG</a>
+                                            </div>
+                                        <?php }
+                                        ?>
+                                    </td>
                                     <td><a href="" class="btn btn-success mr-1">Edit</a><a href="" class="btn btn-danger">Delete</a></td>
                                 </tr>
                             <?php
