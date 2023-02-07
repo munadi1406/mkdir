@@ -1,0 +1,217 @@
+@use "./mixin.scss" as m;
+
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&family=Oxygen:wght@300;400;700&display=swap");
+
+$font: "Oxygen", sans-serif;
+$font2: "Fira Sans", sans-serif;
+
+$color1: rgb(27, 38, 44);
+$color2: rgb(15, 76, 117, 0.5);
+$color3: rgb(50, 130, 184, 0.5);
+$color4: rgb(187, 225, 250);
+$color5: rgb(15, 76, 117);
+
+*,
+html,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: $font;
+}
+body {
+  background-color: $color1;
+  width: 90%;
+  margin: auto;
+}
+
+.wrapper-banner {
+  height: max-content;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 20px;
+  margin: auto;
+  position: relative;
+  z-index: 0;
+  @include m.centerElement(row, space-around);
+  margin-bottom: 10px;
+  .gradient {
+    background-color: rgb(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  img {
+    width: 100px;
+  }
+}
+nav {
+  width: 100%;
+  @include m.centerElement(column, flex-start);
+  background-color: $color3;
+  padding: 10px 20px;
+  border-radius: 20px;
+  .wrapper-title {
+    font-family: $font;
+    font-size: 30px;
+    font-weight: bold;
+    color: $color4;
+    width: 100%;
+  }
+
+  ul {
+    @include m.centerElement(row, flex-start);
+    width: 100%;
+    padding: 10px 0;
+    li {
+      list-style-type: none;
+      margin: 0px 5px;
+      a {
+        color: white;
+        font-family: $font;
+        font-size: 16px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+.wrapper-content {
+  margin-top: 10px;
+  @include m.centerElement(row, space-around);
+  flex-wrap: wrap;
+  .card-movie {
+    width: 170px;
+    height: 250px;
+    @include m.centerElement(column, center);
+    margin: 5px;
+    position: relative;
+    cursor: pointer;
+    img {
+      width: 150px;
+      border-radius: 20px;
+    }
+    .wrapper-title-years {
+      position: absolute;
+      height: 100%;
+      width: 100px !important;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-direction: column;
+      width: 100%;
+      z-index: 1;
+      .title {
+        height: auto;
+        background-color: $color2;
+        backdrop-filter: blur(2px);
+        border-radius: 5px;
+        text-align: center;
+        width: 100%;
+        flex-wrap: wrap;
+        font-family: $font;
+        color: $color4;
+        font-weight: white;
+        font-size: 20px;
+      }
+      .years {
+        width: max-content;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: $color2;
+        font-family: $font;
+        font-style: italic;
+        font-size: 14px;
+        color: white;
+        text-align: right;
+      }
+    }
+    &:hover img {
+      opacity: 0.5;
+    }
+  }
+}
+
+// detail
+.wrapper-detail {
+  padding: 10px;
+  color: white;
+  flex-wrap: wrap;
+  @include m.centerElement(row, center, center);
+  img {
+    width: 400px;
+    border-radius: 20px;
+  }
+  .card-movie {
+    // width: 500px;
+    .wrapper-title-years {
+      width: 100%;
+      min-height: 200px;
+      padding: 10px;
+      @include m.centerElement(column, center, flex-start);
+      background-color: $color3;
+      flex-wrap: wrap;
+      border-radius: 10px;
+      .title {
+        font-size: 16px;
+        font-family: $font2;
+        font-style: italic;
+      }
+      .years {
+        font-size: 16px;
+        font-family: $font2;
+        font-style: italic;
+      }
+    }
+  }
+  .wrapper-movie-link {
+    width: 700px;
+    padding: 20px;
+
+    .container-link {
+      margin-top: -20px;
+
+      padding: 0px 20px;
+      .wrapper-card-link {
+        min-height: 70px;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        background-color: $color5;
+        // box-shadow: 2px -2px 20px black;
+        border-top: 2px solid white;
+
+        .wrapper-quality {
+          color: white;
+        }
+        .wrapper-link-quality {
+          height: max-content;
+          @include m.centerElement(row, flex-start);
+          a {
+            text-decoration: none;
+            font-family: $font;
+            font-size: 12px;
+            color: white;
+            margin: 5px;
+            padding: 5px 8px;
+            border-radius: 5px;
+
+            border-top: 2px solid white;
+            &:nth-child(1) {
+              background-color: #9b59b6;
+            }
+            &:nth-child(2) {
+              background-color: #2ecc71;
+            }
+            &:nth-child(3) {
+              background-color: #e74c3c;
+            }
+          }
+        }
+      }
+    }
+  }
+}
