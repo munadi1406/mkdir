@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,8 +40,10 @@
     </nav>
     <?php
     error_reporting(0);
-
     include './config/config.php';
+    include './log/log.php';
+
+    
 
 
     $page = $_GET['page'] ?? "home";
@@ -61,6 +65,7 @@
             include "./pagenotfound.php";
             break;
     }
+    logVisitorInformation();
     ?>
 </body>
 

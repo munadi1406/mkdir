@@ -1,13 +1,6 @@
 <?php
 include '../../config/config.php';
 
-// Ambil data dari form
-// $title = $_POST['title'];
-// $date = $_POST['date'];
-// $desc = $_POST['desc'];
-// $gd = $_POST['gd'];
-// $utb = $_POST['utb'];
-// $mg = $_POST['mg'];
 $title = mysqli_real_escape_string($conn, $_POST['title']);
 $desc = mysqli_real_escape_string($conn, $_POST['desc']);
 $date = mysqli_real_escape_string($conn, $_POST['date']);

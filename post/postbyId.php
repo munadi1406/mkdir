@@ -1,6 +1,6 @@
 <div class="wrapper-detail">
     <?php
-    include '../config/config.php';
+    // include '../config/config.php';
     session_start();
     $key = "mksnjdfhryeu73436261823546tgdvsbjcmklfigutyrtr49!@#$59423nvldkflsihgrugyqeccdc";
     $salt = sha1($key);
@@ -29,8 +29,11 @@
     if (mysqli_num_rows($result) > 0) {
         $data = mysqli_fetch_assoc($result);
     ?>
-        <img src="./db/images/<?php echo $data['image']; ?>" class="img">
-        <div class="wrapper-movie-link">
+        <div class="wrapper-img">
+        <div class="title">Title : <?php echo $data['title'] ?></div>
+            <img src="./db/images/<?php echo $data['image']; ?>" class="img">
+        </div>
+            <div class="wrapper-movie-link">
             <div class="card-movie">
                 <div class="wrapper-title-years">
                     <div class="title">Title : <?php echo $data['title'] ?></div>

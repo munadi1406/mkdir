@@ -1,5 +1,4 @@
     <?php
-
     $key = "mksnjdfhryeu73436261823546tgdvsbjcmklfigutyrtr49!@#$59423nvldkflsihgrugyqeccdc";
     $salt = sha1($key);
 
@@ -18,7 +17,6 @@
             $enc = base64_encode($plain_id);
 
             $encrypted_id = base64_encode($salt . $enc . $salt);
-
         ?>
             <a href="?page=id&id=<?php echo $encrypted_id ?>">
                 <div class="card-movie">

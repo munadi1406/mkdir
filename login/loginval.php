@@ -13,9 +13,13 @@ if (isset($_POST['login'])) {
         session_start();
         $_SESSION['id_users'] = $row['id_users'];
         $_SESSION['role'] = $row['role'];
-     $pass = md5($pass);
+        $pass = md5($pass);
         if ($pass == $row["password"]) {
             $_SESSION['username'] = $row['username'];
+
+            $cookie = base64_encode($row['username']);
+            setcookie('cid', $cookie, time() + (86400 * 30), "/"); 
+
             echo '<script>
                 alert("login berhasil");
                 window.location="/movie/db/?page=/";
@@ -35,4 +39,3 @@ if (isset($_POST['login'])) {
     }
     $error = true;
 }
-

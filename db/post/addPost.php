@@ -1,3 +1,9 @@
+<?php 
+    include './../middleware/sessionCheck.php'
+
+?>
+
+
 <div class="container-sm  mt-4">
     <form action="?page=postQuery" method="post" enctype='multipart/form-data'>
         <div class="form-group">

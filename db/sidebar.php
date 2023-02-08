@@ -4,9 +4,7 @@ $currentPage = '/';
 if (isset($_GET['page'])) {
   $currentPage = $_GET['page'];
 }
-
 ?>
-
 <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="theme-assets/images/backgrounds/02.jpg">
   <div class="navbar-header">
     <ul class="nav navbar-nav flex-row">
@@ -22,7 +20,7 @@ if (isset($_GET['page'])) {
       </li>
       <li class="nav-item <?php echo ($currentPage == 'post') ? 'active' : ''; ?>"><a href="?page=post"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Post</span></a>
       </li>
-      <li class=" nav-item"><a href="icons.html"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Icons</span></a>
+      <li class=" nav-item <?php echo ($currentPage == 'log') ? 'active' : ''; ?>"><a href="?page=log"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Log</span></a>
       </li>
       <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Cards</span></a>
       </li>  
