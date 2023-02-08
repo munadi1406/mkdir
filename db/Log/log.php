@@ -8,8 +8,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT visited_page, COUNT(visited_page) as count FROM visitor_log GROUP BY visited_page";
-$result = mysqli_query($conn, $sql);
+$sqlPengunjung = "SELECT visited_page, COUNT(visited_page) as count FROM visitor_log GROUP BY visited_page";
+$result = mysqli_query($conn, $sqlPengunjung);
 
 $data = array();
 
@@ -25,6 +25,8 @@ if (mysqli_num_rows($result) > 0) {
     echo "0 results";
 }
 
+
+
 $result = $conn->query("SELECT DATE(visit_time) as date, COUNT(*) as visits FROM visitor_log WHERE visit_time IS NOT NULL GROUP BY date");
 
 // Format data for Chart.js
@@ -37,8 +39,28 @@ while ($row = $result->fetch_assoc()) {
 $visit_time = json_encode($visit_time);
 $visits = json_encode($visits);
 
-mysqli_close($conn);
 
+
+
+// sistem Operasi
+$sqlOs = "SELECT operating_system, COUNT(*) as count FROM visitor_log GROUP BY operating_system;";
+$resultOs = mysqli_query($conn, $sqlOs);
+
+$dataOs = array();
+
+if (mysqli_num_rows($resultOs) > 0) {
+    // output data of each row
+    while ($rows = mysqli_fetch_assoc($resultOs)) {
+        $dataOs[] = array(
+            'operating_system' => $rows["operating_system"],
+            'count' => (int)$rows["count"]
+        );
+    }
+} else {
+    echo "0 results";
+}
+
+mysqli_close($conn);
 
 ?>
 
@@ -106,6 +128,32 @@ mysqli_close($conn);
 
 
 
+        <div class="col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">System Operasi</h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <div class="height-400">
+                            <canvas id="so-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </section>
 
 
@@ -143,6 +191,47 @@ mysqli_close($conn);
         var doughnutSimpleChart = new Chart(ctx, config);
 
 
+
+
+
+
+
+
+        const ctxOs = document.getElementById('so-chart');
+        new Chart(ctxOs, {
+            type: 'polarArea',
+            data: {
+                labels: [<?php foreach ($dataOs as $o) {
+                             echo "'" . $o['operating_system'] . "',";
+                        }  ?>],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [<?php foreach ($dataOs as $o) {
+
+                                
+                                echo $o['count'] . ',';
+                            } ?>],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(75, 192, 192)',
+                        'rgb(255, 205, 86)',
+                        'rgb(201, 203, 207)',
+                        'rgb(54, 162, 235)'
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+
+        // pengunjung
         var pengunjung = document.getElementById('visitorChart').getContext('2d');
         var myChart = new Chart(pengunjung, {
             type: 'line',
@@ -202,7 +291,7 @@ mysqli_close($conn);
             },
             title: {
                 display: true,
-                text: 'Chart.js Line Chart - Legend'
+                text: 'Pengunjung'
             }
         };
         // Chart Data

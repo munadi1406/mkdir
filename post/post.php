@@ -7,7 +7,7 @@
         <?php
         include './config/config.php';
         session_start();
-        $query = "SELECT * FROM films where status = 'show' ";
+        $query = "SELECT * FROM films where status = 'show' ORDER BY created_at DESC";
         $result = mysqli_query($conn, $query);
         ?>
         <?php while ($data = mysqli_fetch_assoc($result)) {
