@@ -3,7 +3,7 @@
     session_start();
 
     include './middleware/sessionCheck.php';
-    
+
 
     ?>
 
@@ -46,6 +46,9 @@
      <link rel="stylesheet" type="text/css" href="theme-assets/css/core/menu/menu-types/vertical-menu.css">
      <link rel="stylesheet" type="text/css" href="theme-assets/css/core/colors/palette-gradient.css">
 
+
+     <!-- datatable -->
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
 
 
      <!-- <link rel="stylesheet" href="./Log/log.css"> -->
@@ -108,7 +111,7 @@
      <!-- BEGIN VENDOR JS-->
      <!-- BEGIN PAGE VENDOR JS-->
      <!-- <script src="theme-assets/vendors/js/charts/chartist.min.js" type="text/javascript"></script> -->
-     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script> -->
      <!-- END PAGE VENDOR JS-->
      <!-- BEGIN CHAMELEON  JS-->
      <script src="theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
@@ -117,6 +120,18 @@
      <!-- BEGIN PAGE LEVEL JS-->
      <!-- <script src="theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script> -->
      <!-- END PAGE LEVEL JS-->
+
+     <!-- datatable -->
+     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+
+     <script>
+         $(document).ready(function() {
+             $('#table_id').DataTable();
+         });
+         $(document).ready(function() {
+             $('#table_post').DataTable();
+         });
+     </script>
  </body>
 
  </html>

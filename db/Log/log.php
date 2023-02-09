@@ -70,7 +70,7 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <a href="?page=log-table" class="btn btn-primary m-2">Log Table</a>
+    <a href="<?php echo $baseUrl . '/db/?page=log-table' ?>" class="btn btn-primary m-2">Log Table</a>
     <section id="chartjs-line-charts">
         <!-- Line Chart -->
         <div class="row">
@@ -99,9 +99,7 @@ mysqli_close($conn);
             </div>
         </div>
 
-
-
-
+        
         <div class="col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-header">
@@ -202,13 +200,13 @@ mysqli_close($conn);
             type: 'polarArea',
             data: {
                 labels: [<?php foreach ($dataOs as $o) {
-                             echo "'" . $o['operating_system'] . "',";
-                        }  ?>],
+                                echo "'" . $o['operating_system'] . "',";
+                            }  ?>],
                 datasets: [{
                     label: '# of Votes',
                     data: [<?php foreach ($dataOs as $o) {
 
-                                
+
                                 echo $o['count'] . ',';
                             } ?>],
                     backgroundColor: [

@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">POST</h4>
-                <a href="?page=post-add" class="btn btn-primary mt-2">Post Add</a>
+                <a href="<?php echo $baseUrl . '/db/?page=post-add' ?>" class="btn btn-primary mt-2">Post Add</a>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -15,8 +15,8 @@
                 </div>
             </div>
             <div class="card-content collapse show">
-                <div class="table-responsive">
-                    <table class="table table-striped">
+                <div class="table-responsive p-2" >
+                    <table class="table table-striped " id="table_post">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -53,7 +53,7 @@
                                     <td><?php echo $i ?></td>
                                     <td><?php echo $data['username']; ?></td>
                                     <td><?php echo $data['title']; ?></td>
-                                    <td><?php echo $data['desc']; ?></td>
+                                    <td ><?php echo $data['desc']; ?></td>
                                     <td><?php echo $data['date']; ?></td>
                                     <td><?php echo $data['created_at']; ?></td>
                                     <td><?php echo $data['name']; ?></td>

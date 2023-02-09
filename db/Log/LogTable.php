@@ -13,8 +13,8 @@
           </ul>
         </div>
       </div>
-      <div class="card-content collapse show">
-        <table class="table table-responsive">
+      <div class="card-content collapse show p-2">
+        <table class="table table-responsive display" id="table_id">
           <thead>
             <tr>
               <th scope="col">No</th>
@@ -24,6 +24,10 @@
               <th scope="col">Browser</th>
               <th scope="col">Operating System</th>
               <th scope="col">Visited Page</th>
+              <th scope="col">Arrival Time</th>
+              <th scope="col">Referer</th>
+              <th scope="col">Screen Resulution</th>
+              <th scope="col">Device</th>
             </tr>
           </thead>
           <tbody>
@@ -47,6 +51,10 @@
                   <td><?php echo $row['browser']; ?></td>
                   <td><?php echo $row['operating_system']; ?></td>
                   <td><?php echo $row['visited_page']; ?></td>
+                  <td><?php echo $row['arrival_time']; ?></td>
+                  <td><?php echo $row['referrer']; ?></td>
+                  <td><?php echo $row['screen_resulution']; ?></td>
+                  <td><?php echo $row['device']; ?></td>
                 </tr>
             <?php
             $i++;
@@ -62,3 +70,4 @@
     </div>
   </div>
 </div>
+

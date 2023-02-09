@@ -8,7 +8,10 @@ $date = mysqli_real_escape_string($conn, $_POST['date']);
 
 // Validasi form tidak boleh kosong
 if ($title == "" || $desc == "") {
-    echo "<script>alert('Form tidak boleh kosong');</script>";
+    echo '<script>
+    alert("Form Harus Di Isi");
+    window.location="'. $baseUrl .'/db/?page=post-add";
+ </script>';
     exit;
 }
 
@@ -21,14 +24,17 @@ $id_users = $_SESSION['id_users'];
 
 // Validasi file gambar
 if ($_FILES['image']['size'] == 0) {
-    echo "<script>alert('File gambar harus dipilih');</script>";
+    echo '<script>
+    alert("Gambar Harus Di Pilih");
+    window.location="'. $baseUrl .'/db/?page=post-add";
+ </script>';
     exit;
 }
 
 
 // $image = mysqli_real_escape_string($conn, $_POST['image']);
 
-$sql = "INSERT INTO films (id_users, title, `desc`, date, image) VALUES (2, '$title', '$desc', '$date', '$image');";
+$sql = "INSERT INTO films (id_users, title, `desc`, date, image) VALUES ($id_users, '$title', '$desc', '$date', '$image');";
 if (mysqli_query($conn, $sql)) {
     $id_films = mysqli_insert_id($conn);
 } else {
@@ -85,9 +91,13 @@ if (!file_exists('images')) {
 // Upload gambar
 if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
 } else {
-    echo "<script>alert('Gambar gagal diupload');</script>";
+    echo '<script>
+    alert("Gambar Harus Di Upload");
+    window.location="'. $baseUrl .'/db/?page=post-add";
+ </script>';
 }
 
 echo '<script>
+alert("Data Berhasil Di Post");
                 window.location="/movie/db/?page=post";
              </script>';

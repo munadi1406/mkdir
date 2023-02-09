@@ -16,11 +16,11 @@ if (isset($_GET['page'])) {
   </div>
   <div class="main-menu-content">
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-      <li class="nav-item <?php echo ($currentPage == '/') ? 'active' : ''; ?>"><a href="?page=/"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
+      <li class="nav-item <?php echo ($currentPage == '/' ) ? 'active' : ''; ?>"><a href="?page=/"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
       </li>
-      <li class="nav-item <?php echo ($currentPage == 'post') ? 'active' : ''; ?>"><a href="?page=post"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Post</span></a>
+      <li class="nav-item <?php echo ($currentPage == 'post' || $currentPage == 'post-add') ? 'active' : ''; ?>"><a href="?page=post"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Post</span></a>
       </li>
-      <li class=" nav-item <?php echo ($currentPage == 'log') ? 'active' : ''; ?>"><a href="?page=log"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Log</span></a>
+      <li class=" nav-item <?php echo ($currentPage == 'log' || $currentPage == 'log-table') ? 'active' : ''; ?>"><a href="?page=log"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Log</span></a>
       </li>
       <li class=" nav-item"><a href="cards.html"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Cards</span></a>
       </li>  

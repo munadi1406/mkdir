@@ -53,9 +53,9 @@
                             <div><?php echo $data['quality']?></div>                            
                         </div>
                         <div class="wrapper-link-quality">
-                            <a href="<?php echo $data['GD'] ?>">GD</a>
-                            <a href="<?php echo $data['UTB'] ?>">UTB</a>
-                            <a href="<?php echo $data['MG'] ?>">MG</a>
+                            <a href="<?php echo $data['GD'] ?>" target="_blank">GD</a>
+                            <a href="<?php echo $data['UTB'] ?>" target="_blank">UTB</a>
+                            <a href="<?php echo $data['MG'] ?>" target="_blank">MG</a>
 
                         </div>
                     </div>

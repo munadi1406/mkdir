@@ -22,19 +22,18 @@ if (isset($_POST['login'])) {
 
             echo '<script>
                 alert("login berhasil");
-                window.location="/movie/db/?page=/";
+                window.location="'. $baseUrl .'/db/?page=/";
              </script>';
-            // echo $_SESSION['username'];
         } else {
             echo '<script>
                 alert("Masukkan Password Yang Benar...");
-                window.location="/movie/db";
+                window.location="/?page=login";
              </script>';
         }
     } else {
         echo '<script>
                 alert("Akun Anda Tidak Ada !!!");
-                window.location="/movie/db";
+                window.location="/?page=login";
              </script>';
     }
     $error = true;
