@@ -569,15 +569,13 @@ select.form-control {
   border: none;
   border-radius: 0.35rem;
   transform-origin: top;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   transform: scale(1, 0);
   transition: all 0.2s linear;
   margin: -0.1rem 0 0;
   box-shadow: 0px 0px 15px 1px rgba(64, 70, 74, 0.25);
   min-width: 11rem;
-  -webkit-animation: menu-header-fade-in 0.3s ease 1, menu-header-move-up 0.3s ease-out 1;
-          animation: menu-header-fade-in 0.3s ease 1, menu-header-move-up 0.3s ease-out 1;
+  animation: menu-header-fade-in 0.3s ease 1, menu-header-move-up 0.3s ease-out 1;
 }
 .dropdown .dropdown-menu .dropdown-header {
   padding: 10px 20px;
@@ -603,15 +601,13 @@ select.form-control {
   border: none;
   border-radius: 0.35rem;
   transform-origin: top;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   transform: scale(1, 0);
   transition: all 0.2s linear;
   margin: -0.1rem 0 0;
   box-shadow: 0px 0px 15px 1px rgba(64, 70, 74, 0.25) !important;
   min-width: 11rem;
-  -webkit-animation: menu-header-fade-in 0.3s ease 1, menu-header-move-up 0.3s ease-out 1;
-          animation: menu-header-fade-in 0.3s ease 1, menu-header-move-up 0.3s ease-out 1;
+  animation: menu-header-fade-in 0.3s ease 1, menu-header-move-up 0.3s ease-out 1;
 }
 .dropdown .dropdown-menu .dropdown-header {
   padding: 10px 20px;
@@ -867,29 +863,12 @@ select.form-control {
   color: #fff;
 }
 
-@-webkit-keyframes menu-header-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes menu-header-fade-in {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-@-webkit-keyframes menu-header-move-up {
-  from {
-    margin-top: 10px;
-  }
-  to {
-    margin-top: 0;
   }
 }
 @keyframes menu-header-move-up {
@@ -1441,7 +1420,7 @@ select.form-control {
     padding: 1.5rem 0.6rem;
   }
   .header-navbar .navbar-container ul.nav li a.nav-link-search,
-.header-navbar .navbar-container ul.nav li a.nav-link-expand {
+  .header-navbar .navbar-container ul.nav li a.nav-link-expand {
     padding: 1.4rem 1rem 1rem 1rem;
   }
   .header-navbar .navbar-container ul.nav li .dropdown-toggle::after {
@@ -1449,23 +1428,23 @@ select.form-control {
     margin-left: -2px;
   }
   .navbar-dark .hamburger-inner,
-.navbar-dark .hamburger-inner::before,
-.navbar-dark .hamburger-inner::after,
-.navbar-semi-dark .hamburger-inner,
-.navbar-semi-dark .hamburger-inner::before,
-.navbar-semi-dark .hamburger-inner::after {
+  .navbar-dark .hamburger-inner::before,
+  .navbar-dark .hamburger-inner::after,
+  .navbar-semi-dark .hamburger-inner,
+  .navbar-semi-dark .hamburger-inner::before,
+  .navbar-semi-dark .hamburger-inner::after {
     background-color: #FFFFFF;
   }
   .navbar-dark .navbar-header .navbar-nav .nav-link,
-.navbar-semi-dark .navbar-header .navbar-nav .nav-link {
+  .navbar-semi-dark .navbar-header .navbar-nav .nav-link {
     color: #FFFFFF;
   }
   .navbar-light .navbar-header .navbar-nav .nav-link,
-.navbar-semi-light .navbar-header .navbar-nav .nav-link {
+  .navbar-semi-light .navbar-header .navbar-nav .nav-link {
     color: #2C303B;
   }
   .navbar-light .navbar-nav .nav-link,
-.navbar-semi-light .navbar-nav .nav-link {
+  .navbar-semi-light .navbar-nav .nav-link {
     color: #FFFFFF;
   }
 }
@@ -2107,8 +2086,8 @@ code[class*=language-], pre[class*=language-] {
 }
 @media (min-width: 576px) {
   .nav.nav-pills.nav-justified .nav-link.active,
-.nav.nav-pills.nav-justified .nav-link.active:hover,
-.nav.nav-pills.nav-justified .nav-link.active:focus {
+  .nav.nav-pills.nav-justified .nav-link.active:hover,
+  .nav.nav-pills.nav-justified .nav-link.active:focus {
     border-bottom-color: transparent;
   }
 }
@@ -2567,8 +2546,7 @@ ul.list-inline.list-inline-pipe > li + li:before {
 
 .icon-spin {
   display: inline-block;
-  -webkit-animation: spin 1s infinite linear;
-          animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
 }
 
 .icon-shadow {
@@ -2620,14 +2598,6 @@ ul.list-inline.list-inline-pipe > li + li:before {
 
 .embed-responsive:before {
   padding-top: 57%;
-}
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
 }
 @keyframes spin {
   from {
@@ -2682,7 +2652,6 @@ a:hover {
 
 .spinner {
   display: inline-block;
-  -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
 

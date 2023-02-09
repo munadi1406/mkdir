@@ -26,7 +26,7 @@
               <th scope="col">Visited Page</th>
               <th scope="col">Arrival Time</th>
               <th scope="col">Referer</th>
-              <th scope="col">Screen Resulution</th>
+              <th scope="col">Screen Resolution</th>
               <th scope="col">Device</th>
             </tr>
           </thead>
@@ -53,7 +53,7 @@
                   <td><?php echo $row['visited_page']; ?></td>
                   <td><?php echo $row['arrival_time']; ?></td>
                   <td><?php echo $row['referrer']; ?></td>
-                  <td><?php echo $row['screen_resulution']; ?></td>
+                  <td><?php echo $row['screen_resolution']; ?></td>
                   <td><?php echo $row['device']; ?></td>
                 </tr>
             <?php

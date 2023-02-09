@@ -1,14 +1,20 @@
 <?php
 include '../config/config.php';
-// $visit_time = date("Y-m-d H:i:s");
+
 $ip_address = $_SERVER['REMOTE_ADDR'];
 $browser = $_SERVER['HTTP_USER_AGENT'];
 $operating_system = getOS();
 $visited_page = $_SERVER['REQUEST_URI'];
 $arrival_time = date("Y-m-d H:i:s");
-$referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "Unknown";
-$screen_resolution = isset($_COOKIE['resolution']) ? $_COOKIE['resolution'] : "Unknown";
+$referrer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "Unknown/Refresh";
+
+
+$screen = $_COOKIE['resolution'];
 $device = isset($_COOKIE['device']) ? $_COOKIE['device'] : "Unknown";
+
+
+
+
 
 
 // Menambahkan log pengunjung ke database
@@ -16,12 +22,12 @@ $sql = "INSERT INTO visitor_log ( ip_address, browser, operating_system, visited
 VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssssss", $ip_address, $browser, $operating_system, $visited_page, $arrival_time, $referrer, $screen_resolution, $device);
+$stmt->bind_param("ssssssss", $ip_address, $browser, $operating_system, $visited_page, $arrival_time, $referrer, $screen, $device);
 
 if ($stmt->execute() === TRUE) {
-    echo "Data berhasil disimpan";
+
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    
 }
 
 // Fungsi untuk menentukan sistem operasi

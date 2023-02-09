@@ -81,6 +81,9 @@
                     case "postQuery";
                         include "./post/postQuery.php";
                         break;
+                    case "post-delete";
+                        include "./post/postDelete.php";
+                        break;
                     case "loginval";
                         include "./login/loginval.php";
                         break;
@@ -89,7 +92,7 @@
                         break;
                         // limbah
                     case "log-table";
-                        include "./log/logTable.php";
+                        include "./Log/LogTable.php";
                         break;
                     case "add-limbah-push";
                         include "../limbah/push.php";

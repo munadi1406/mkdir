@@ -17,8 +17,14 @@ if (isset($_POST['login'])) {
         if ($pass == $row["password"]) {
             $_SESSION['username'] = $row['username'];
 
+            $cookieid = base64_encode($row['id_users']);
+            setcookie('cid', $cookieid, time() + (86400 * 30), "/"); 
+
+
+
+
             $cookie = base64_encode($row['username']);
-            setcookie('cid', $cookie, time() + (86400 * 30), "/"); 
+            setcookie('cnm', $cookie, time() + (86400 * 30), "/"); 
 
             echo '<script>
                 alert("login berhasil");

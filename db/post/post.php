@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="card-content collapse show">
-                <div class="table-responsive p-2" >
+                <div class="table-responsive p-2">
                     <table class="table table-striped " id="table_post">
                         <thead>
                             <tr>
@@ -47,21 +47,21 @@
                                 die("Query gagal: " . mysqli_error($conn));
                             }
                             $i = 1;
-                            while ($data = mysqli_fetch_assoc($result)) {
+                            while ($dataFilms = mysqli_fetch_assoc($result)) {
                             ?>
                                 <tr>
                                     <td><?php echo $i ?></td>
-                                    <td><?php echo $data['username']; ?></td>
-                                    <td><?php echo $data['title']; ?></td>
-                                    <td ><?php echo $data['desc']; ?></td>
-                                    <td><?php echo $data['date']; ?></td>
-                                    <td><?php echo $data['created_at']; ?></td>
-                                    <td><?php echo $data['name']; ?></td>
-                                    <td><?php echo $data['status']; ?></td>
-                                    <td><img src=".../../images/<?php echo $data['image']; ?>" width="50px"></td>
+                                    <td><?php echo $dataFilms['username']; ?></td>
+                                    <td><?php echo $dataFilms['title']; ?></td>
+                                    <td><?php echo $dataFilms['desc']; ?></td>
+                                    <td><?php echo $dataFilms['date']; ?></td>
+                                    <td><?php echo $dataFilms['created_at']; ?></td>
+                                    <td><?php echo $dataFilms['name']; ?></td>
+                                    <td><?php echo $dataFilms['status']; ?></td>
+                                    <td><img src=".../../images/<?php echo $dataFilms['image']; ?>" width="50px"></td>
                                     <td>
                                         <?php
-                                        $id_film = $data['film_id'];
+                                        $id_film = $dataFilms['film_id'];
                                         // loop link
                                         $query2 = "SELECT * FROM link where film_id = '$id_film'";
                                         $result2 = mysqli_query($conn, $query2);
@@ -76,7 +76,11 @@
                                         <?php }
                                         ?>
                                     </td>
-                                    <td><a href="" class="btn btn-success mr-1">Edit</a><a href="" class="btn btn-danger">Delete</a></td>
+                                    <td>
+                                        <a href="" class="btn btn-success w-100 mb-1">Edit</a>
+                                        <a href="" class="btn btn-warning w-100 mb-1">Delete</a>
+                                        <a href="?page=post-delete&id=<?php echo $dataFilms['film_id']?>" class="btn btn-danger w-100" onclick="return confirm('Apakah Anda Yakin Ingin Mengapus Postingan Ini Secara Permanen?');">Delete Permanent</a></td>
+                                    </td>
                                 </tr>
                             <?php
                                 $i++;

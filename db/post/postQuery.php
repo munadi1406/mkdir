@@ -20,7 +20,7 @@ $image = $_FILES['image']['name'];
 // Tempat menyimpan gambar
 $target = "images/" . basename($image);
 
-$id_users = $_SESSION['id_users'];
+$id_users = base64_decode($_COOKIE['cid']);
 
 // Validasi file gambar
 if ($_FILES['image']['size'] == 0) {

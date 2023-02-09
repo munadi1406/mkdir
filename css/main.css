@@ -10,12 +10,15 @@ body {
 
 body {
   background-color: rgb(27, 38, 44);
+}
+
+.container-all {
   width: 90%;
+  position: relative;
   margin: auto;
 }
 
 .wrapper-banner {
-  height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
   overflow: hidden;
@@ -48,7 +51,7 @@ nav {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   background-color: rgba(50, 130, 184, 0.5);
   padding: 10px 20px;
@@ -59,14 +62,16 @@ nav .wrapper-title {
   font-size: 30px;
   font-weight: bold;
   color: rgb(187, 225, 250);
-  width: 100%;
+  width: -moz-max-content;
+  width: max-content;
 }
 nav ul {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  width: 100%;
+  width: -moz-max-content;
+  width: max-content;
   padding: 10px 0;
 }
 nav ul li {
@@ -76,14 +81,21 @@ nav ul li {
 nav ul li a {
   color: white;
   font-family: "Oxygen", sans-serif;
-  font-size: 16px;
   text-decoration: none;
+}
+nav ul li a div {
+  font-size: 16px;
+}
+nav ul li a span {
+  display: none !important;
+  font-size: 30px;
 }
 
 .wrapper-content {
+  width: 100%;
   margin-top: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
@@ -129,7 +141,6 @@ nav ul li a {
   margin: 0 auto;
 }
 .wrapper-content .card-movie .wrapper-title-years .years {
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   padding: 5px;
@@ -143,6 +154,48 @@ nav ul li a {
 }
 .wrapper-content .card-movie:hover img {
   opacity: 0.5;
+}
+
+.container-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.container-pagination .pagination {
+  width: -moz-max-content;
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgba(15, 76, 117, 0.5);
+  padding: 0px 10px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+}
+.container-pagination .pagination li {
+  list-style-type: none;
+}
+.container-pagination .pagination li a {
+  height: 30px;
+  display: block;
+  padding: 0px 10px;
+  border-radius: 5px;
+  background-color: white;
+  color: rgb(15, 76, 117);
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
 }
 
 .wrapper-detail {
@@ -175,7 +228,7 @@ nav ul li a {
   text-transform: capitalize;
 }
 .wrapper-detail .wrapper-img img {
-  max-width: 100%;
+  min-width: 400px;
   width: auto;
   height: auto;
   border-radius: 20px;
@@ -226,7 +279,6 @@ nav ul li a {
   color: white;
 }
 .wrapper-detail .wrapper-movie-link .container-link .wrapper-card-link .wrapper-link-quality {
-  height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
   display: flex;
@@ -256,18 +308,66 @@ nav ul li a {
 
 @media screen and (max-width: 950px) {
   .wrapper-movie-link {
-    border: 1px solid red;
     width: 100%;
   }
 }
 @media screen and (max-width: 600px) {
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    height: 80px;
+    padding: 0 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(50, 130, 184, 0.7);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 0;
+  }
+  nav .wrapper-title {
+    font-size: 8px;
+    height: -moz-max-content;
+    height: max-content;
+    margin-bottom: -15px;
+  }
+  nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 10px;
+    margin-bottom: 5px;
+  }
+  nav ul li {
+    height: 100%;
+  }
+  nav ul li a {
+    display: block;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+  nav ul li a div {
+    font-size: 10px;
+  }
+  nav ul li a span {
+    display: block !important;
+  }
   .wrapper-content .card-movie {
     width: 100%;
     height: auto;
     margin: 5px 0;
   }
   .wrapper-content .card-movie img {
-    width: 100%;
+    width: 400px;
     max-width: 300px;
   }
   .wrapper-content .card-movie .wrapper-title-years {
@@ -276,5 +376,18 @@ nav ul li a {
   .wrapper-content .card-movie .wrapper-title-years .title {
     width: 100%;
     padding: 10px;
+  }
+  .container-pagination {
+    margin-bottom: 90px;
+  }
+  .wrapper-detail {
+    margin-bottom: 50px;
+  }
+  .wrapper-detail .wrapper-img {
+    width: 100%;
+  }
+  .wrapper-detail .wrapper-img img {
+    min-width: 100%;
+    max-width: 100%;
   }
 }/*# sourceMappingURL=main.css.map */

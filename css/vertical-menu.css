@@ -30,8 +30,7 @@ body.vertical-layout.vertical-menu.menu-expanded .navbar .navbar-container {
   margin-left: 260px;
 }
 body.vertical-layout.vertical-menu.menu-expanded .navbar .navbar-brand .brand-text {
-  -webkit-animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
-          animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
+  animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
 }
 body.vertical-layout.vertical-menu.menu-expanded .main-menu {
   width: 260px;
@@ -127,8 +126,7 @@ body.vertical-layout.vertical-menu.menu-collapsed .navbar .navbar-container {
   margin-left: 60px;
 }
 body.vertical-layout.vertical-menu.menu-collapsed .navbar .navbar-brand .brand-text {
-  -webkit-animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadeout;
-          animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadeout;
+  animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadeout;
 }
 body.vertical-layout.vertical-menu.menu-collapsed .main-menu {
   width: 60px;
@@ -328,7 +326,7 @@ body.vertical-layout.vertical-menu.menu-collapsed.menu-flipped .footer {
     width: 60px;
   }
   body.vertical-layout.vertical-menu .content,
-body.vertical-layout.vertical-menu .footer {
+  body.vertical-layout.vertical-menu .footer {
     margin-left: 60px;
   }
 }
@@ -337,20 +335,12 @@ body.vertical-layout.vertical-menu .footer {
     margin-left: 0px !important;
   }
   body.vertical-layout.vertical-menu.menu-expanded .content,
-body.vertical-layout.vertical-menu.menu-expanded .footer {
+  body.vertical-layout.vertical-menu.menu-expanded .footer {
     margin-left: 0px !important;
   }
   html.loading .main-menu, html.loading .vertical-overlay-menu.menu-hide .main-menu, .vertical-overlay-menu.menu-hide html.loading .main-menu {
     opacity: 0;
     transform: translate3d(0px, 0, 0);
-  }
-}
-@-webkit-keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 @keyframes fadein {
@@ -359,14 +349,6 @@ body.vertical-layout.vertical-menu.menu-expanded .footer {
   }
   to {
     opacity: 1;
-  }
-}
-@-webkit-keyframes fadeout {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 @keyframes fadeout {

@@ -11,6 +11,8 @@ $color3: rgb(50, 130, 184, 0.5);
 $color4: rgb(187, 225, 250);
 $color5: rgb(15, 76, 117);
 
+$bgNavbarMobile: rgb(50, 130, 184, 0.7);
+
 *,
 html,
 body {
@@ -21,11 +23,16 @@ body {
 }
 body {
   background-color: $color1;
-  width: 90%;
-  margin: auto;
+  // width: 90%;
+  // margin: auto;
+  // position: relative; 
 }
 
-
+.container-all{
+  width: 90%;
+  position: relative; 
+  margin: auto;
+}
 
 // banner
 .wrapper-banner {
@@ -56,7 +63,7 @@ body {
 // navbar
 nav {
   width: 100%;
-  @include m.centerElement(column, flex-start);
+  @include m.centerElement(column,flex-start,flex-start);
   background-color: $color3;
   padding: 10px 20px;
   border-radius: 20px;
@@ -65,12 +72,14 @@ nav {
     font-size: 30px;
     font-weight: bold;
     color: $color4;
-    width: 100%;
+    width: max-content;
+
   }
 
   ul {
     @include m.centerElement(row, flex-start);
-    width: 100%;
+    width: max-content;
+
     padding: 10px 0;
     li {
       list-style-type: none;
@@ -78,8 +87,14 @@ nav {
       a {
         color: white;
         font-family: $font;
-        font-size: 16px;
         text-decoration: none;
+        div{
+          font-size: 16px;
+        }
+        span{
+          display: none !important;
+          font-size: 30px;
+        }
       }
     }
   }
@@ -88,8 +103,10 @@ nav {
 
 // main home
 .wrapper-content {
+  // margin: auto;
+  width: 100%;
   margin-top: 10px;
-  @include m.centerElement(row, space-around);
+  @include m.centerElement(row,center,center);
   flex-wrap: wrap;
   .card-movie {
     width: 170px;
@@ -143,6 +160,41 @@ nav {
   }
 }
 
+// pagination
+.container-pagination{
+  @include m.centerElement(row,center,center);
+  position: relative;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  .pagination{
+    width: max-content;
+    @include m.centerElement(row,center,center);
+    background-color: $color2;
+    padding: 0px 10px;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    li{
+      list-style-type: none;
+      a{
+        height: 30px;
+        display: block;
+        // width: 20px;
+        padding: 0px 10px;
+        border-radius: 5px;
+        background-color: white;
+        color: $color5;
+        font-family: $font;
+        font-weight: bold;
+        margin: 5px;
+        @include m.centerElement();
+        text-decoration: none;
+      }
+
+    }
+  }
+}
+
 // detail show by id
 .wrapper-detail {
   padding: 10px;
@@ -157,7 +209,7 @@ nav {
       z-index: 1;
       background-color: $color3;
       padding: 10px;
-      font-size: 1rem;
+      font-size: 1rem; 
       border-radius: 10px;
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
@@ -166,7 +218,8 @@ nav {
       text-transform: capitalize;
     }
     img {
-      max-width: 100%;
+      // min-width: 1;
+      min-width: 400px;
       width: auto;
       height: auto;
       border-radius: 20px;
@@ -244,19 +297,62 @@ nav {
 
 @media screen and (max-width: 950px) {
   .wrapper-movie-link {
-    border: 1px solid red;
     width: 100%;
   }
 }
 
 @media screen and (max-width: 600px) {
+  
+  nav{
+    @include m.centerElement(column-reverse,center,center);
+    height: 80px;
+    padding: 0 10px;
+    position: fixed;
+    bottom:0 ;
+    left: 0;
+    z-index: 2;
+    background-color: $bgNavbarMobile;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 0;
+    .wrapper-title{
+      font-size: 8px;
+      height: max-content;
+      margin-bottom: -15px;
+    }
+    ul{
+      width: 100%;
+      @include m.centerElement(row);
+      flex-wrap: wrap;
+      padding: 0 10px;
+      margin-bottom: 5px;
+      li{
+        height: 100%;
+        // border: 1px solid white;
+        a{
+          // height: 50px;
+          display: block;
+          width: 70px;
+          @include m.centerElement(column-reverse);
+          div{
+            font-size: 10px;
+          }
+          span{
+            display:block !important;
+          }
+        }
+      }
+    }
+
+  }
   .wrapper-content {
+    // margin-bottom: 50px;
     .card-movie {
       width: 100%;
       height: auto;
       margin: 5px 0 ;
       img {
-       width:100%;
+       width:400px;
        max-width: 300px;
       }
       .wrapper-title-years {
@@ -265,6 +361,19 @@ nav {
           width: 100%;
           padding: 10px;
         }
+      }
+    }
+  }
+  .container-pagination{
+    margin-bottom: 90px; 
+  }
+  .wrapper-detail{
+    margin-bottom: 50px;
+    .wrapper-img{
+      width: 100%;
+      img{
+        min-width: 100%;
+        max-width: 100%;
       }
     }
   }
