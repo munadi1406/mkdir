@@ -30,10 +30,10 @@
         $data = mysqli_fetch_assoc($result);
     ?>
         <div class="wrapper-img">
-        <div class="title">Title : <?php echo $data['title'] ?></div>
+            <div class="title">Title : <?php echo $data['title'] ?></div>
             <img src="./db/images/<?php echo $data['image']; ?>" class="img">
         </div>
-            <div class="wrapper-movie-link">
+        <div class="wrapper-movie-link">
             <div class="card-movie">
                 <div class="wrapper-title-years">
                     <div class="title">Title : <?php echo $data['title'] ?></div>
@@ -46,11 +46,11 @@
             $query2 = "SELECT * FROM link where film_id = '$dcry' ";
             $result2 = mysqli_query($conn, $query2);
             ?>
-                <div class="container-link">
-            <?php while ($data = mysqli_fetch_assoc($result2)) { ?>
+            <div class="container-link">
+                <?php while ($data = mysqli_fetch_assoc($result2)) { ?>
                     <div class="wrapper-card-link">
                         <div class="wrapper-quality">
-                            <div><?php echo $data['quality']?></div>                            
+                            <div><?php echo $data['quality'] ?></div>
                         </div>
                         <div class="wrapper-link-quality">
                             <a href="<?php echo $data['GD'] ?>" target="_blank">GD</a>
@@ -59,8 +59,8 @@
 
                         </div>
                     </div>
-                    <?php } ?>
-                </div>
+                <?php } ?>
+            </div>
         </div>
     <?php
     } else {

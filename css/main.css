@@ -97,10 +97,60 @@ nav ul li a span {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
 }
-.wrapper-content .card-movie {
+.wrapper-content .container-carousel {
+  display: flex;
+  justify-content: none;
+  align-items: none;
+  flex-direction: row;
+  width: 100%;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+}
+.wrapper-content .container-carousel::-webkit-scrollbar {
+  background-color: transparent;
+  height: 10px;
+}
+.wrapper-content .container-carousel::-webkit-scrollbar-thumb {
+  background-color: rgb(15, 76, 117);
+  border-radius: 20px;
+}
+.wrapper-content .container-carousel .swiper-container {
+  width: 100%;
+}
+.wrapper-content .container-carousel .swiper-container .swiper-wrapper {
+  padding: 10px;
+  width: -moz-max-content;
+  width: max-content;
+}
+.wrapper-content .container-carousel .swiper-container .swiper-wrapper .swiper-slide {
+  width: 170px !important;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 10px;
+}
+.wrapper-content .container-carousel .swiper-container .swiper-wrapper .swiper-slide img {
+  width: 100%;
+  border-radius: 10px;
+}
+.wrapper-content .container-card {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.wrapper-content .container-card .card-movie {
   width: 170px;
   height: 250px;
   display: flex;
@@ -111,11 +161,11 @@ nav ul li a span {
   position: relative;
   cursor: pointer;
 }
-.wrapper-content .card-movie img {
+.wrapper-content .container-card .card-movie img {
   width: 150px;
   border-radius: 20px;
 }
-.wrapper-content .card-movie .wrapper-title-years {
+.wrapper-content .container-card .card-movie .wrapper-title-years {
   position: absolute;
   height: 100%;
   display: flex;
@@ -125,7 +175,7 @@ nav ul li a span {
   width: 100%;
   z-index: 1;
 }
-.wrapper-content .card-movie .wrapper-title-years .title {
+.wrapper-content .container-card .card-movie .wrapper-title-years .title {
   height: auto;
   background-color: rgba(15, 76, 117, 0.5);
   -webkit-backdrop-filter: blur(2px);
@@ -140,7 +190,7 @@ nav ul li a span {
   font-size: 16px;
   margin: 0 auto;
 }
-.wrapper-content .card-movie .wrapper-title-years .years {
+.wrapper-content .container-card .card-movie .wrapper-title-years .years {
   width: -moz-max-content;
   width: max-content;
   padding: 5px;
@@ -152,7 +202,7 @@ nav ul li a span {
   color: white;
   text-align: right;
 }
-.wrapper-content .card-movie:hover img {
+.wrapper-content .container-card .card-movie:hover img {
   opacity: 0.5;
 }
 
@@ -237,6 +287,9 @@ nav ul li a span {
   position: relative;
   z-index: 0;
 }
+.wrapper-detail .card-movie {
+  width: 100%;
+}
 .wrapper-detail .card-movie .wrapper-title-years {
   width: 100%;
   min-height: 200px;
@@ -260,7 +313,7 @@ nav ul li a span {
   font-style: italic;
 }
 .wrapper-detail .wrapper-movie-link {
-  min-width: 50%;
+  width: 50%;
   padding: 20px 10px;
 }
 .wrapper-detail .wrapper-movie-link .container-link {
@@ -308,7 +361,8 @@ nav ul li a span {
 
 @media screen and (max-width: 950px) {
   .wrapper-movie-link {
-    width: 100%;
+    width: 100% !important;
+    min-width: none;
   }
 }
 @media screen and (max-width: 600px) {
@@ -361,19 +415,37 @@ nav ul li a span {
   nav ul li a span {
     display: block !important;
   }
-  .wrapper-content .card-movie {
+  .wrapper-content .container-carousel {
+    overflow-x: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background-color: rgba(50, 130, 184, 0.5);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+  .wrapper-content .container-carousel .swiper-container .swiper-wrapper {
+    padding: 0;
+    width: -moz-max-content;
+    width: max-content;
+  }
+  .wrapper-content .container-carousel .swiper-container .swiper-wrapper .swiper-slide {
+    width: 100px !important;
+    height: auto;
+  }
+  .wrapper-content .container-card .card-movie {
     width: 100%;
     height: auto;
     margin: 5px 0;
   }
-  .wrapper-content .card-movie img {
+  .wrapper-content .container-card .card-movie img {
     width: 400px;
     max-width: 300px;
   }
-  .wrapper-content .card-movie .wrapper-title-years {
+  .wrapper-content .container-card .card-movie .wrapper-title-years {
     width: 70%;
   }
-  .wrapper-content .card-movie .wrapper-title-years .title {
+  .wrapper-content .container-card .card-movie .wrapper-title-years .title {
     width: 100%;
     padding: 10px;
   }
@@ -389,5 +461,9 @@ nav ul li a span {
   .wrapper-detail .wrapper-img img {
     min-width: 100%;
     max-width: 100%;
+  }
+  .wrapper-detail .wrapper-movie-link {
+    width: 100%;
+    min-width: none;
   }
 }/*# sourceMappingURL=main.css.map */

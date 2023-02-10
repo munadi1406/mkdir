@@ -12,6 +12,7 @@ include './config/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <title>Ngemovie</title>
 </head>
 
@@ -100,6 +101,18 @@ include './config/config.php';
 
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+    let swiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView: 'auto',
+        mousewheel: {
+            forceToAxis: true,
+        },
+      
+    });
+</script>
 <script>
     document.cookie = "resolution=" + screen.width + " x " + screen.height;
     document.cookie = "device=" + navigator.platform;
