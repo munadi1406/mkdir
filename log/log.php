@@ -1,5 +1,5 @@
 <?php
-include '../config/config.php';
+// include '../config/config.php';
 
 $ip_address = $_SERVER['REMOTE_ADDR'];
 $browser = $_SERVER['HTTP_USER_AGENT'];

@@ -10,10 +10,11 @@ $date = mysqli_real_escape_string($conn, $_POST['date']);
 if ($title == "" || $desc == "") {
     echo '<script>
     alert("Form Harus Di Isi");
-    window.location="'. $baseUrl .'/db/?page=post-add";
+    window.location="' . $baseUrl . '/db/?page=post-add";
  </script>';
     exit;
 }
+
 
 // Ambil nama file gambar
 $image = $_FILES['image']['name'];
@@ -26,7 +27,7 @@ $id_users = base64_decode($_COOKIE['cid']);
 if ($_FILES['image']['size'] == 0) {
     echo '<script>
     alert("Gambar Harus Di Pilih");
-    window.location="'. $baseUrl .'/db/?page=post-add";
+    window.location="' . $baseUrl . '/db/?page=post-add";
  </script>';
     exit;
 }
@@ -54,28 +55,38 @@ if (isset($_POST['genre'])) {
     }
 }
 
-$gd1080 = mysqli_real_escape_string($conn, $_POST['gd1080']);
-$utb1080 = mysqli_real_escape_string($conn, $_POST['utb1080']);
-$mg1080 = mysqli_real_escape_string($conn, $_POST['mg1080']);
-$quality1080 = mysqli_real_escape_string($conn, $_POST['quality1080']);
-
-$gd720= mysqli_real_escape_string($conn, $_POST['gd720']);
-$utb720= mysqli_real_escape_string($conn, $_POST['utb720']);
-$mg720= mysqli_real_escape_string($conn, $_POST['mg720']);
-$quality720= mysqli_real_escape_string($conn, $_POST['quality720']);
-
-$gd540 = mysqli_real_escape_string($conn, $_POST['gd540']);
-$utb540 = mysqli_real_escape_string($conn, $_POST['utb540']);
-$mg540 = mysqli_real_escape_string($conn, $_POST['mg540']);
-$quality540 = mysqli_real_escape_string($conn, $_POST['quality540']);
-
-
-
-$sql = "INSERT INTO link (GD, UTB, MG, film_id, quality) VALUES ('$gd1080', '$utb1080', '$mg1080', '$id_films', '$quality1080'),('$gd720', '$utb720', '$mg720', '$id_films', '$quality720'),('$gd540', '$utb540', '$mg540', '$id_films', '$quality540')";
-if (mysqli_query($conn, $sql)) {
-} else {
-    echo "Error inserting link data: " . mysqli_error($conn);
+$values = [];
+if (isset($_POST['quality1080']) && $_POST['quality1080'] === '1080') {
+    $gd1080 = $_POST['gd1080'];
+    $utb1080 = $_POST['utb1080'];
+    $mg1080 = $_POST['mg1080'];
+    $values[] = "('$gd1080', '$utb1080', '$mg1080', '$id_films', '1080')";
 }
+if (isset($_POST['quality720']) && $_POST['quality720'] === '720') {
+    $gd720 = $_POST['gd720'];
+    $utb720 = $_POST['utb720'];
+    $mg720 = $_POST['mg720'];
+    $values[] = "('$gd720', '$utb720', '$mg720', '$id_films', '720')";
+}
+if (isset($_POST['quality540']) && $_POST['quality540'] === '540') {
+    $gd540 = $_POST['gd540'];
+    $utb540 = $_POST['utb540'];
+    $mg540 = $_POST['mg540'];
+    $values[] = "('$gd540', '$utb540', '$mg540', '$id_films', '540')";
+}
+
+if (count($values) > 0) {
+    $values = implode(",", $values);
+    $sql = "INSERT INTO link (GD, UTB, MG, film_id, quality) VALUES $values";
+    if (mysqli_query($conn, $sql)) {
+    } else {
+        echo "Error inserting link data: " . mysqli_error($conn);
+    }
+}
+
+
+
+
 
 mysqli_close($conn);
 
@@ -93,11 +104,11 @@ if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
 } else {
     echo '<script>
     alert("Gambar Harus Di Upload");
-    window.location="'. $baseUrl .'/db/?page=post-add";
+    window.location="' . $baseUrl . '/db/?page=post-add";
  </script>';
 }
 
 echo '<script>
 alert("Data Berhasil Di Post");
-                window.location="/movie/db/?page=post";
+window.location="' . $baseUrl . '/db/?page=post";
              </script>';

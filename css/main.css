@@ -21,27 +21,17 @@ body {
 .wrapper-banner {
   height: -moz-max-content;
   height: max-content;
-  overflow: hidden;
   width: 100%;
   border-radius: 20px;
   margin: auto;
   position: relative;
   z-index: 0;
+  overflow: hidden;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
   margin-bottom: 10px;
-}
-.wrapper-banner .gradient {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  z-index: 1;
 }
 .wrapper-banner img {
   width: 100px;
@@ -278,8 +268,7 @@ nav ul li a span {
   text-transform: capitalize;
 }
 .wrapper-detail .wrapper-img img {
-  min-width: 400px;
-  width: auto;
+  width: 400px;
   height: auto;
   border-radius: 20px;
   top: 0;

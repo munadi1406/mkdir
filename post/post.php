@@ -1,7 +1,13 @@
 <?php
 $key = "mksnjdfhryeu73436261823546tgdvsbjcmklfigutyrtr49!@#$59423nvldkflsihgrugyqeccdc";
 $salt = sha1($key);
-include '../config/config.php';
+// include '../config/config.php';
+// include './post/postClass.php';
+
+
+$post = new PostClass($conn);
+
+
 
 ?>
 <div class="wrapper-content">
@@ -9,8 +15,7 @@ include '../config/config.php';
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <?php
-                $queryRandom = "SELECT * FROM films ORDER BY RAND() LIMIT 10;";
-                $resultRandom = mysqli_query($conn, $queryRandom);
+                $resultRandom = $post->getRandomPost(10);
                 while ($dataRandom = mysqli_fetch_assoc($resultRandom)) {
 
                     $plain_id =  $dataRandom['film_id'];
@@ -19,10 +24,9 @@ include '../config/config.php';
 
                     $encrypted_id = base64_encode($salt . $enc . $salt);
                 ?>
-                        <a href="?page=id&id=<?php echo $encrypted_id ?>" class="swiper-slide">
-                                <img src="./db/images/<?php echo $dataRandom['image']; ?>" class="img">
-                        </a>
-
+                    <a href="?page=id&id=<?php echo $encrypted_id ?>" class="swiper-slide">
+                        <img src="./db/images/<?php echo $dataRandom['image']; ?>" class="img">
+                    </a>
                 <?php } ?>
             </div>
         </div>
@@ -30,8 +34,6 @@ include '../config/config.php';
     <div class="container-card">
 
         <?php
-
-        session_start();
 
         $records_per_page = 12;
         $current_page = 1;
@@ -42,8 +44,7 @@ include '../config/config.php';
         $start_from = ($current_page - 1) * $records_per_page;
 
 
-        $query = "SELECT * FROM films where status = 'show' ORDER BY created_at DESC LIMIT $start_from, $records_per_page";
-        $result = mysqli_query($conn, $query);
+        $result = $post->postAll($start_from, $records_per_page);
 
         $total_records = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM films where status = 'show' "));
         $total_pages = ceil($total_records / $records_per_page);
@@ -76,10 +77,10 @@ include '../config/config.php';
 <div class="container-pagination">
     <ul class="pagination">
         <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-            <li class="page-item <?php if ($i == $current_page) {
-                                        echo 'active';
-                                    } ?>">
-                <a class="page-link" href="?page=home&pages=<?php echo $i; ?>">
+            <li class="page-item ">
+                <a class="page-link" href="?page=home&pages=<?php echo $i; ?>" style="background-color: <?php if ($i == $current_page) {
+                                                                                                            echo 'rgb(187, 225, 250) !important';
+                                                                                                        } ?>;">
                     <?php echo $i; ?>
                 </a>
             </li>

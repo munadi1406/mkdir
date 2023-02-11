@@ -57,7 +57,18 @@
                                     <td><?php echo $dataFilms['date']; ?></td>
                                     <td><?php echo $dataFilms['created_at']; ?></td>
                                     <td><?php echo $dataFilms['name']; ?></td>
-                                    <td><?php echo $dataFilms['status']; ?></td>
+                                    <td>
+                                        <form action="?page=post-select-update" method="POST">
+                                            <?php $id = $dataFilms['film_id'];
+                                            $status = $dataFilms['status']; ?>
+                                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                            <select name="status" id="">
+                                                <option value="show" <?php if ($dataFilms['status'] == 'show') echo 'selected'; ?>>Show</option>
+                                                <option value="deleted" <?php if ($dataFilms['status'] == 'deleted') echo 'selected'; ?>>Deleted</option>
+                                            </select>
+                                            <input type="submit" value="Ubah" name="very_show" class="btn btn-info mt-1" style="padding: 5px;">
+                                        </form>
+                                    </td>
                                     <td><img src=".../../images/<?php echo $dataFilms['image']; ?>" width="50px"></td>
                                     <td>
                                         <?php
@@ -68,18 +79,18 @@
                                         ?>
                                         <?php while ($data = mysqli_fetch_assoc($result2)) {    ?>
                                             <div><?php echo $data['quality'] ?></div>
-                                            <div class="wrapper-link-post" style="display: flex;">
-                                                <a href="<?php echo $data['GD'] ?>" style="margin-right:5px ;padding:5px;" class="btn btn-primary ">GD</a>
-                                                <a href="<?php echo $data['UTB'] ?>" style="margin-right:5px;padding:5px;" class="btn btn-success">UTB</a>
-                                                <a href="<?php echo $data['MG'] ?>" style="padding:5px;" class="btn btn-danger">MG</a>
+                                            <div class="wrapper-link-post" style="display: <?php echo $data['quality']? 'flex':  '' ?>;">
+                                                <a href="<?php echo $data['GD'] ?>" style="margin-right:5px ;padding:5px; display:<?php echo$data['GD']?'':'none' ?>" class="btn btn-primary " target="_blank">GD</a>
+                                                <a href="<?php echo $data['UTB'] ?>" style="margin-right:5px;padding:5px; display:<?php echo$data['UTB']?'':'none' ?>" class="btn btn-success" target="_blank">UTB</a>
+                                                <a href="<?php echo $data['MG'] ?>" style="padding:5px; display: <?php echo$data['MG']?'':'none' ?>" class="btn btn-danger " target="_blank">MG</a>
                                             </div>
                                         <?php }
                                         ?>
                                     </td>
                                     <td>
                                         <a href="" class="btn btn-success w-100 mb-1">Edit</a>
-                                        <a href="" class="btn btn-warning w-100 mb-1">Delete</a>
-                                        <a href="?page=post-delete&id=<?php echo $dataFilms['film_id']?>" class="btn btn-danger w-100" onclick="return confirm('Apakah Anda Yakin Ingin Mengapus Postingan Ini Secara Permanen?');">Delete Permanent</a></td>
+                                        <a href="?page=post-delete&id=<?php echo $dataFilms['film_id'] ?>" class="btn btn-danger w-100" onclick="return confirm('Apakah Anda Yakin Ingin Mengapus Postingan Ini Secara Permanen?');">Delete Permanent</a>
+                                    </td>
                                     </td>
                                 </tr>
                             <?php

@@ -1,6 +1,11 @@
 <?php
 include './config/config.php';
+include './post/postClass.php';
+$key = "mksnjdfhryeu73436261823546tgdvsbjcmklfigutyrtr49!@#$59423nvldkflsihgrugyqeccdc";
+$salt = sha1($key);
 
+$post = new postClass($conn);
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -19,22 +24,22 @@ include './config/config.php';
 <body>
 
     <div class="container-all">
-
         <div class="wrapper-banner">
-            <div class="gradient"></div>
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
-            <img src="./assets/banner.png" alt="">
+            <!-- <div class="gradient"></div> -->
+            <?php
+            $resultRandom = $post->getRandomPost(12);
+            while ($dataRandom = mysqli_fetch_assoc($resultRandom)) {
+
+                $plain_id =  $dataRandom['film_id'];
+
+                $enc = base64_encode($plain_id);
+
+                $encrypted_id = base64_encode($salt . $enc . $salt);
+            ?>
+             <a href="?page=id&id=<?php echo $encrypted_id ?>">
+                <img src="./db/images/<?php echo $dataRandom['image']; ?>" class="img">
+             </a>
+            <?php } ?>
         </div>
         <div class="wrapper-navbar">
             <nav>
@@ -68,6 +73,9 @@ include './config/config.php';
         </div>
         <?php
         error_reporting(0);
+
+        // error_reporting(E_ALL);
+        // ini_set('display_errors', 1);
 
         include './log/log.php';
 
@@ -110,7 +118,7 @@ include './config/config.php';
         mousewheel: {
             forceToAxis: true,
         },
-      
+
     });
 </script>
 <script>

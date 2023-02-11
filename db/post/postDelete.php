@@ -9,6 +9,16 @@ if (!$conn) {
 // Mendapatkan id film dari URL
 $film_id = $_GET['id'];
 
+$query = "SELECT * FROM films WHERE film_id = $film_id";
+$result = mysqli_query($conn, $query);
+$film = mysqli_fetch_assoc($result);
+$file_name = $film['image'];
+
+// Hapus file dari folder images
+if (!empty($file_name) && file_exists('images/' . $file_name)) {
+    unlink('images/' . $file_name);
+}
+
 // Query hapus data film
 $query = "DELETE FROM films WHERE film_id = $film_id";
 

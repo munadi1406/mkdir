@@ -84,6 +84,9 @@
                     case "post-delete";
                         include "./post/postDelete.php";
                         break;
+                    case "post-select-update";
+                        include "./post/showSelect.php";
+                        break;
                     case "loginval";
                         include "./login/loginval.php";
                         break;

@@ -6,11 +6,12 @@
     $result = mysqli_query($conn, $query);
     $user = mysqli_fetch_assoc($result);
     if (!$user) {
-        header('location: ' . $baseUrl . '/login');
-        exit;
+        echo '<script>
+        window.location="' . $baseUrl . '/login";
+                     </script>';
     }
 } else {
-    header('location: ' . $baseUrl . '/login');
-    exit;
+    echo '<script>
+window.location="' . $baseUrl . '/login";
+             </script>';
 }
-?>
