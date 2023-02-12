@@ -36,9 +36,9 @@ session_start();
 
                 $encrypted_id = base64_encode($salt . $enc . $salt);
             ?>
-             <a href="?page=id&id=<?php echo $encrypted_id ?>">
-                <img src="./db/images/<?php echo $dataRandom['image']; ?>" class="img">
-             </a>
+                <a href="?page=id&id=<?php echo $encrypted_id ?>">
+                    <img src="./db/images/<?php echo $dataRandom['image']; ?>" class="img">
+                </a>
             <?php } ?>
         </div>
         <div class="wrapper-navbar">
@@ -56,12 +56,25 @@ session_start();
                             </span>
                         </a>
                     </li>
-                    <li><a href="">
+                    <li class="menu"><a href="#">
                             <div>Genre</div>
                             <span class="material-symbols-outlined">
                                 movie
                             </span>
-                        </a></li>
+                        </a>
+                        <ul class="ani-menu">
+                            <li><a href="?page=genre&genre=action">Action</a></li>
+                            <li><a href="?page=genre&genre=Comedy">Comedy</a></li>
+                            <li><a href="?page=genre&genre=drama">Drama</a></li>
+                            <li><a href="?page=genre&genre=horror">Horror</a></li>
+                            <li><a href="?page=genre&genre=sci-fi">Sci-Fi</a></li>
+                            <li><a href="?page=genre&genre=romance">Romance</a></li>
+                            <li><a href="?page=genre&genre=adventure">Adventure</a></li>
+                            <li><a href="?page=genre&genre=fantasy">Fastasy</a></li>
+                            <li><a href="?page=genre&genre=thriller">Thriller</a></li>
+                            <li><a href="?page=genre&genre=mystery">Mystery</a></li>
+                        </ul>
+                    </li>
                     <li><a href="">
                             <div>Country</div>
                             <span class="material-symbols-outlined">
@@ -89,7 +102,7 @@ session_start();
                 include "./post/post.php";
                 break;
             case "genre":
-                include "login.php";
+                include "./post/postByGenre.php";
                 break;
             case "login":
                 include "./login/login.php";

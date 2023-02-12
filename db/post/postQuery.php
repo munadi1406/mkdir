@@ -84,8 +84,11 @@ if (count($values) > 0) {
     }
 }
 
-
-
+$sql = "INSERT INTO viewers (film_id,views) VALUES ('$id_films',0)";
+$res = mysqli_query($conn,$sql);
+if(!$res){
+    exit;
+}
 
 
 mysqli_close($conn);

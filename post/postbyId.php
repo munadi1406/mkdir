@@ -51,7 +51,7 @@
             <?php
             $result2 = $post->linkPostById($dcry);
 
-
+            $updateViews = $post->updateViews($dcry);
             
             ?>
             <div class="container-link">

@@ -65,11 +65,11 @@ nav {
   ul {
     @include m.centerElement(row, flex-start);
     width: max-content;
-
     padding: 10px 0;
     li {
       list-style-type: none;
-      margin: 0px 5px;
+      margin: 0px 10px;
+      position: relative;
       a {
         color: white;
         font-family: $font;
@@ -80,6 +80,44 @@ nav {
         span {
           display: none !important;
           font-size: 30px;
+        }
+      }
+      ul {
+        @include m.centerElement(column, flex-start, flex-start);
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        z-index: 3;
+        color: white;
+        transition: all 0.1s ease-in-out;
+        width: max-content;
+        padding: 20px 0;
+        li {
+          transition: all 0.3s ease-in-out;
+          background-color: $color3;
+          backdrop-filter: blur(2px) !important;
+          -webkit-backdrop-filter: blur(2px) ;
+          width: 200px;
+          margin: 0;
+          visibility: hidden;
+          opacity: 0;
+          a {
+            @include m.centerElement();
+            height: 50px;
+            &:hover {
+              background-color: $color5;
+            }
+          }
+        }
+      }
+      &:hover ul,
+      &:hover li {
+        visibility: visible;
+        opacity: 1;
+      }
+      @for $i from 2 through 10 {
+        &:hover li:nth-child(#{$i}) {
+          transition-delay: 0.1s * $i;
         }
       }
     }
@@ -101,11 +139,11 @@ nav {
     overflow-x: scroll;
     flex-wrap: nowrap;
     margin-bottom: 10px;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       background-color: transparent;
       height: 10px;
     }
-    &::-webkit-scrollbar-thumb{
+    &::-webkit-scrollbar-thumb {
       background-color: $color5;
       border-radius: 20px;
     }
@@ -128,191 +166,262 @@ nav {
       }
     }
   }
-    .container-card {
-      flex-wrap: wrap;
-      @include m.centerElement(row, center, center);
-      width: 100%;
-
-      .card-movie {
-        width: 170px;
-        height: 250px;
-        @include m.centerElement(column, center);
-        margin: 5px;
-        position: relative;
-        cursor: pointer;
- 
-        img {
-          width: 150px;
-          border-radius: 20px;
-        }
-        .wrapper-title-years {
-          position: absolute;
-          height: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          flex-direction: column;
-          width: 100%;
-          z-index: 1;
-          .title {
-            height: auto;
-            background-color: $color2;
-            backdrop-filter: blur(2px);
-            border-radius: 5px;
-            text-align: center;
-            width: 70%;
-            flex-wrap: wrap;
-            font-family: $font;
-            color: $color4;
-            font-weight: white;
-            font-size: 16px;
-            margin: 0 auto;
-          }
-          .years {
-            width: max-content;
-            padding: 5px;
-            border-radius: 5px;
-            background-color: $color2;
-            font-family: $font;
-            font-style: italic;
-            font-size: 14px;
-            color: white;
-            text-align: right;
-          }
-        }
-        &:hover img {
-          opacity: 0.5;
-        }
-      }
-    }
-  }
-
-  // pagination
-  .container-pagination {
-    @include m.centerElement(row, center, center);
-    position: relative;
-    flex-wrap: wrap;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    .pagination {
-      width: max-content;
-      @include m.centerElement(row, center, center);
-      background-color: $color2;
-      padding: 0px 10px;
-      border-radius: 5px;
-      flex-wrap: wrap;
-      li {
-        list-style-type: none;
-        a {
-          height: 30px;
-          display: block;
-          // width: 20px;
-          padding: 0px 10px;
-          border-radius: 5px;
-          background-color: white;
-          color: $color5;
-          font-family: $font;
-          font-weight: bold;
-          margin: 5px;
-          @include m.centerElement();
-          text-decoration: none;
-        }
-      }
-    }
-  }
-
-  // detail show by id
-  .wrapper-detail {
-    padding: 10px;
-    color: white;
+  .container-card {
     flex-wrap: wrap;
     @include m.centerElement(row, center, center);
-    .wrapper-img {
-      max-width: 400px;
-      @include m.centerElement(column, center, center);
-      .title {
-        position: relative;
-        z-index: 1;
-        background-color: $color3;
-        padding: 10px;
-        font-size: 1rem;
-        border-radius: 10px;
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
-        width: 80%;
-        text-align: center;
-        text-transform: capitalize;
-      }
-      img {
-        width: 400px;
-        // width: auto;
-        height: auto;
-        border-radius: 20px;
-        top: 0;
-        margin-top: -20px;
-        position: relative;
-        z-index: 0;
-      }
-    }
+    width: 100%;
+
     .card-movie {
-      width: 100%;
+      width: 170px;
+      height: 250px;
+      @include m.centerElement(column, center);
+      margin: 5px;
+      position: relative;
+      cursor: pointer;
+
+      img {
+        width: 150px;
+        border-radius: 20px;
+      }
       .wrapper-title-years {
+        position: absolute;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-direction: column;
         width: 100%;
-        min-height: 200px;
-        padding: 10px;
-        @include m.centerElement(column, center, flex-start);
-        background-color: $color3;
-        flex-wrap: wrap;
-        border-radius: 10px;
+        z-index: 1;
         .title {
+          height: auto;
+          background-color: $color2;
+          backdrop-filter: blur(2px);
+          border-radius: 5px;
+          text-align: center;
+          width: 70%;
+          flex-wrap: wrap;
+          font-family: $font;
+          color: $color4;
+          font-weight: white;
           font-size: 16px;
-          font-family: $font2;
-          font-style: italic;
+          margin: 0 auto;
         }
         .years {
-          font-size: 16px;
-          font-family: $font2;
+          width: max-content;
+          padding: 5px;
+          border-radius: 5px;
+          background-color: $color2;
+          font-family: $font;
           font-style: italic;
+          font-size: 14px;
+          color: white;
+          text-align: right;
+        }
+      }
+      &:hover img {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+// pagination
+.container-pagination {
+  @include m.centerElement(row, center, center);
+  position: relative;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  .pagination {
+    width: max-content;
+    @include m.centerElement(row, center, center);
+    background-color: $color2;
+    padding: 0px 10px;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    li {
+      list-style-type: none;
+      a {
+        height: 30px;
+        display: block;
+        // width: 20px;
+        padding: 0px 10px;
+        border-radius: 5px;
+        background-color: white;
+        color: $color5;
+        font-family: $font;
+        font-weight: bold;
+        margin: 5px;
+        @include m.centerElement();
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// detail show by id
+.wrapper-detail {
+  padding: 10px;
+  color: white;
+  flex-wrap: wrap;
+  @include m.centerElement(row, center, center);
+  .wrapper-img {
+    max-width: 400px;
+    @include m.centerElement(column, center, center);
+    .title {
+      position: relative;
+      z-index: 1;
+      background-color: $color3;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      width: 80%;
+      text-align: center;
+      text-transform: capitalize;
+    }
+    img {
+      width: 400px;
+      // width: auto;
+      height: auto;
+      border-radius: 20px;
+      top: 0;
+      margin-top: -20px;
+      position: relative;
+      z-index: 0;
+    }
+  }
+  .card-movie {
+    width: 100%;
+    .wrapper-title-years {
+      width: 100%;
+      min-height: 200px;
+      padding: 10px;
+      @include m.centerElement(column, center, flex-start);
+      background-color: $color3;
+      flex-wrap: wrap;
+      border-radius: 10px;
+      .title {
+        font-size: 16px;
+        font-family: $font2;
+        font-style: italic;
+      }
+      .years {
+        font-size: 16px;
+        font-family: $font2;
+        font-style: italic;
+      }
+    }
+  }
+  .wrapper-movie-link {
+    width: 50%;
+    padding: 20px 10px;
+    .container-link {
+      margin-top: -20px;
+      padding: 0px 20px;
+      .wrapper-card-link {
+        min-height: 70px;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        background-color: $color5;
+        border-top: 2px solid white;
+        .wrapper-quality {
+          color: white;
+        }
+        .wrapper-link-quality {
+          height: max-content;
+          @include m.centerElement(row, flex-start);
+          a {
+            text-decoration: none;
+            font-family: $font;
+            font-size: 12px;
+            color: white;
+            margin: 5px;
+            padding: 5px 8px;
+            border-radius: 5px;
+
+            border-top: 2px solid white;
+            &:nth-child(1) {
+              background-color: #9b59b6;
+            }
+            &:nth-child(2) {
+              background-color: #2ecc71;
+            }
+            &:nth-child(3) {
+              background-color: #e74c3c;
+            }
+          }
         }
       }
     }
-    .wrapper-movie-link {
-      width: 50%;
-      padding: 20px 10px;
-      .container-link {
-        margin-top: -20px;
-        padding: 0px 20px;
-        .wrapper-card-link {
-          min-height: 70px;
-          padding: 10px;
-          margin: 10px;
-          border-radius: 10px;
-          background-color: $color5;
-          border-top: 2px solid white;
-          .wrapper-quality {
-            color: white;
-          }
-          .wrapper-link-quality {
-            height: max-content;
-            @include m.centerElement(row, flex-start);
-            a {
-              text-decoration: none;
-              font-family: $font;
-              font-size: 12px;
-              color: white;
-              margin: 5px;
-              padding: 5px 8px;
-              border-radius: 5px;
+  }
+}
 
-              border-top: 2px solid white;
-              &:nth-child(1) {
-                background-color: #9b59b6;
-              }
-              &:nth-child(2) {
-                background-color: #2ecc71;
-              }
-              &:nth-child(3) {
-                background-color: #e74c3c;
+@media screen and (max-width: 950px) {
+  .wrapper-movie-link {
+    width: 100% !important;
+    min-width: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    @include m.centerElement(column-reverse, center, center);
+    height: 80px;
+    padding: 0 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    background-color: $bgNavbarMobile;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 0;
+    .wrapper-title {
+      font-size: 8px;
+      height: max-content;
+      margin-bottom: -15px;
+    }
+    ul {
+      width: 100%;
+      @include m.centerElement(row);
+      flex-wrap: wrap;
+      padding: 0 10px;
+      margin-bottom: 5px;
+      li {
+        height: 100%;
+        a {
+          // height: 50px;
+          display: block;
+          width: 70px;
+          @include m.centerElement(column-reverse);
+          div {
+            font-size: 10px;
+          }
+          span {
+            display: block !important;
+          }
+        }
+        .ani-menu {
+          transform: translateY(-96%);
+          @include m.centerElement(column-reverse);
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          padding: 30px 0;
+          li {
+            width: 100%;
+            background-color: transparent;
+            a{
+              background-color: $color5;
+              @include m.centerElement(row,flex-start,center);
+              width: 100%;
+              padding: 0px 10px;
+              &:hover{
+                background-color: $color3;
               }
             }
           }
@@ -320,113 +429,62 @@ nav {
       }
     }
   }
+  .wrapper-content {
+    // margin-bottom: 50px;
+    .container-carousel {
+      overflow-x: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background-color: $color3;
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+      .swiper-container {
+        .swiper-wrapper {
+          padding: 0;
+          width: max-content;
+          .swiper-slide {
+            width: 100px !important;
+            height: auto;
+          }
+        }
+      }
+    }
+    .container-card {
+      .card-movie {
+        width: 100%;
+        height: auto;
+        margin: 5px 0;
+        img {
+          width: 400px;
+          max-width: 300px;
+        }
+        .wrapper-title-years {
+          width: 70%;
+          .title {
+            width: 100%;
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+  .container-pagination {
+    margin-bottom: 90px;
+  }
+  .wrapper-detail {
+    margin-bottom: 50px;
+    .wrapper-img {
+      width: 100%;
+      img {
+        min-width: 100%;
+        max-width: 100%;
+      }
+    }
 
-  @media screen and (max-width: 950px) {
     .wrapper-movie-link {
-      width: 100% !important;
+      width: 100%;
       min-width: none;
     }
   }
-
-  @media screen and (max-width: 600px) {
-    nav {
-      @include m.centerElement(column-reverse, center, center);
-      height: 80px;
-      padding: 0 10px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      z-index: 2;
-      background-color: $bgNavbarMobile;
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      border-radius: 0;
-      .wrapper-title {
-        font-size: 8px;
-        height: max-content;
-        margin-bottom: -15px;
-      }
-      ul {
-        width: 100%;
-        @include m.centerElement(row);
-        flex-wrap: wrap;
-        padding: 0 10px;
-        margin-bottom: 5px;
-        li {
-          height: 100%;
-          // border: 1px solid white;
-          a {
-            // height: 50px;
-            display: block;
-            width: 70px;
-            @include m.centerElement(column-reverse);
-            div {
-              font-size: 10px;
-            }
-            span {
-              display: block !important;
-            }
-          }
-        }
-      }
-    }
-    .wrapper-content {
-      // margin-bottom: 50px;
-      .container-carousel{
-        overflow-x: hidden;
-        position: sticky;
-        top: 0;
-        z-index: 3;
-        background-color: $color3;
-        -webkit-backdrop-filter: blur(2px);
-        backdrop-filter: blur(2px);
-        .swiper-container {
-          .swiper-wrapper {
-            padding: 0;
-            width: max-content;
-            .swiper-slide {
-              width: 100px !important;
-              height: auto;
-            }
-          }
-        }
-      }
-      .container-card {
-        .card-movie {
-          width: 100%;
-          height: auto;
-          margin: 5px 0;
-          img {
-            width: 400px;
-            max-width: 300px;
-          }
-          .wrapper-title-years {
-            width: 70%;
-            .title {
-              width: 100%;
-              padding: 10px;
-            }
-          }
-        }
-      }
-    }
-    .container-pagination {
-      margin-bottom: 90px;
-    }
-    .wrapper-detail {
-      margin-bottom: 50px;
-      .wrapper-img {
-        width: 100%;
-        img {
-          min-width: 100%;
-          max-width: 100%;
-        }
-      }
-
-      .wrapper-movie-link {
-        width: 100%;
-        min-width: none;
-      }
-    }
-  }
-
+}

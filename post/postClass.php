@@ -39,4 +39,20 @@ class PostClass
 
         return $this->res=$result;
     }
+
+
+    public function postByGenre($genre){
+        $query = "SELECT f.*, g.name FROM films f JOIN genre g ON f.film_id = g.id_films WHERE g.name LIKE '%".$genre."%'";
+
+        $result = mysqli_query($this->conn,$query);
+
+
+        return $this->res = $result;
+    }
+
+
+    public function updateViews($dcry){
+        $sql = "UPDATE viewers SET views = views + 1 WHERE film_id = '$dcry';";
+        $result = mysqli_query($this->conn,$sql);
+    }
 }

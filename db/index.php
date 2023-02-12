@@ -75,6 +75,9 @@
                     case "post";
                         include "./post/post.php";
                         break;
+                    case "post-views";
+                        include "./post/postViews.php";
+                        break;
                     case "post-add";
                         include "./post/addPost.php";
                         break;

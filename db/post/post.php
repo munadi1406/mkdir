@@ -4,6 +4,7 @@
             <div class="card-header">
                 <h4 class="card-title">POST</h4>
                 <a href="<?php echo $baseUrl . '/db/?page=post-add' ?>" class="btn btn-primary mt-2">Post Add</a>
+                <a href="<?php echo $baseUrl . '/db/?page=post-views' ?>" class="btn btn-info mt-2">Post Views</a>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
