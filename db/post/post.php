@@ -36,7 +36,7 @@
                         <tbody>
                             <?php
                             // Memastikan koneksi ke database berhasil dibuat
-                            include '../../config/config.php';
+                            // include '../../config/config.php';
 
                             if (!$conn) {
                                 die("Koneksi gagal: " . mysqli_connect_error());
@@ -89,7 +89,7 @@
                                         ?>
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-success w-100 mb-1">Edit</a>
+                                        <a href="?page=post-edit&id=<?php echo $id_film ?>" class="btn btn-success w-100 mb-1">Edit</a>
                                         <a href="?page=post-delete&id=<?php echo $dataFilms['film_id'] ?>" class="btn btn-danger w-100" onclick="return confirm('Apakah Anda Yakin Ingin Mengapus Postingan Ini Secara Permanen?');">Delete Permanent</a>
                                     </td>
                                     </td>

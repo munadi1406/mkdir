@@ -32,7 +32,7 @@
           </thead>
           <tbody>
             <?php
-            include './../../config/config.php';
+            // include './../../config/config.php';
             if (!$conn) {
               die("Error connecting to database: " . mysqli_connect_error());
             }

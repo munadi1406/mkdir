@@ -26,8 +26,6 @@
                         </thead>
                         <tbody>
                             <?php
-                            // Memastikan koneksi ke database berhasil dibuat
-                            include '../../config/config.php';
 
                             if (!$conn) {
                                 die("Koneksi gagal: " . mysqli_connect_error());

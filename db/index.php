@@ -64,7 +64,11 @@
      <div class="app-content content">
          <div class="content-wrapper">
              <?php
-                error_reporting(0);
+                // error_reporting(0);
+
+
+                error_reporting(E_ALL);
+        ini_set('display_errors', 1);
                 switch ($_GET['page']) {
                     default:
                         include "./dashboard.php";
@@ -80,6 +84,12 @@
                         break;
                     case "post-add";
                         include "./post/addPost.php";
+                        break;
+                    case "post-edit";
+                        include "./post/postEdit.php";
+                        break;
+                    case "post-edit-query";
+                        include "./post/postEditQuery.php";
                         break;
                     case "postQuery";
                         include "./post/postQuery.php";

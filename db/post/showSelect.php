@@ -17,7 +17,6 @@ echo '<script>
     window.location="' . $baseUrl . '/db/?page=post";
  </script>';
     exit;
-//   echo 'berhaisl';
 } else {
     // Jika gagal, tampilkan pesan kesalahan
       echo "Terjadi kesalahan saat mengubah status pengguna: " . $conn->error;

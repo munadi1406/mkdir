@@ -62,7 +62,7 @@ session_start();
                                 movie
                             </span>
                         </a>
-                        <ul class="ani-menu">
+                        <ul class="">
                             <li><a href="?page=genre&genre=action">Action</a></li>
                             <li><a href="?page=genre&genre=Comedy">Comedy</a></li>
                             <li><a href="?page=genre&genre=drama">Drama</a></li>
@@ -75,12 +75,17 @@ session_start();
                             <li><a href="?page=genre&genre=mystery">Mystery</a></li>
                         </ul>
                     </li>
-                    <li><a href="">
-                            <div>Country</div>
+                    <li><a href="#">
+                            <div>Tipe</div>
                             <span class="material-symbols-outlined">
-                                flag_circle
+                                drag_indicator
                             </span>
-                        </a></li>
+                        </a>
+                        <ul>
+                            <li><a href="?page=genre&genre=action">DRAKOR</a></li>
+                            <li><a href="?page=genre&genre=Comedy">MOVIE</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>

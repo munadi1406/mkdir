@@ -404,7 +404,7 @@ nav {
             display: block !important;
           }
         }
-        .ani-menu {
+        ul {
           transform: translateY(-96%);
           @include m.centerElement(column-reverse);
           position: fixed;

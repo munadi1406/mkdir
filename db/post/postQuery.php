@@ -90,11 +90,7 @@ if(!$res){
     exit;
 }
 
-
 mysqli_close($conn);
-
-
-
 
 
 
@@ -104,6 +100,7 @@ if (!file_exists('images')) {
 
 // Upload gambar
 if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+    
 } else {
     echo '<script>
     alert("Gambar Harus Di Upload");

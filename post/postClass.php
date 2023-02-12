@@ -42,7 +42,7 @@ class PostClass
 
 
     public function postByGenre($genre){
-        $query = "SELECT f.*, g.name FROM films f JOIN genre g ON f.film_id = g.id_films WHERE g.name LIKE '%".$genre."%'";
+        $query = "SELECT f.*, g.name FROM films f JOIN genre g ON f.film_id = g.id_films WHERE g.name LIKE '%".$genre."%' AND f.status = 'show'";
 
         $result = mysqli_query($this->conn,$query);
 

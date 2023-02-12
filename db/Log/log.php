@@ -1,7 +1,7 @@
 <?php
 // Create connection
 // $conn = mysqli_connect($servername, $username, $password, $dbname);
-include './../../config/config.php';
+// include './../../config/config.php';
 
 // Check connection
 if (!$conn) {
