@@ -41,6 +41,20 @@ session_start();
                 </a>
             <?php } ?>
         </div>
+        <!-- IKLAN -->
+        <!-- <div class="banner-iklan">
+        <script type="text/javascript">
+	atOptions = {
+		'key' : '8d38f9181d136e1bcf5e53f9cd53a029',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+	document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.effectivecreativeformat.com/8d38f9181d136e1bcf5e53f9cd53a029/invoke.js"></scr' + 'ipt>');
+</script>
+        </div> -->
+        <!-- CLOSE IKLAN -->
         <div class="wrapper-navbar">
             <nav>
                 <div class="wrapper-title">
@@ -82,13 +96,14 @@ session_start();
                             </span>
                         </a>
                         <ul>
-                            <li><a href="?page=genre&genre=action">DRAKOR</a></li>
-                            <li><a href="?page=genre&genre=Comedy">MOVIE</a></li>
+                            <li><a href="?page=tipe&tipe=Series">Series</a></li>
+                            <li><a href="?page=tipe&tipe=Movie">MOVIE</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
+
         <?php
         error_reporting(0);
 
@@ -109,6 +124,9 @@ session_start();
             case "genre":
                 include "./post/postByGenre.php";
                 break;
+            case "tipe":
+                include "./post/postByTipe.php";
+                break;
             case "login":
                 include "./login/login.php";
                 break;
@@ -126,6 +144,10 @@ session_start();
         ?>
 
     </div>
+    <!-- <div class="banner-iklan">
+        <script async="async" data-cfasync="false" src="//pl18453985.highcpmrevenuenetwork.com/8561a7ca6319994b04c6a6cb0ee26d83/invoke.js"></script>
+        <div id="container-8561a7ca6319994b04c6a6cb0ee26d83"></div>
+    </div> -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>

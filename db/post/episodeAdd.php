@@ -1,72 +1,20 @@
-<?php
-// include './../middleware/sessionCheck.php'
+<?php 
+
+$film_id =  $_GET['id'];
 
 ?>
 
 
+
+
 <div class="container-sm  mt-4">
-    <form action="?page=postQuery" method="post" enctype='multipart/form-data'>
+    <form action="?page=add-episode-query" method="post" enctype='multipart/form-data'>
+        <input type="hidden" value="<?php echo $film_id ?>" name="film_id">
         <div class="form-group">
-            <label for="exampleInputEmail1">Title</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title">
+            <label for="exampleInputEmail1">Episode</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="episode">
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Desc</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" name="desc">
-        </div>
-        <div class="form-group">
-            <label for="datepicker">Pilih Tanggal:</label>
-            <input type="date" class="form-control" id="datepicker" name="date">
-        </div>
-        <div class="form-group">
-            <label for="genre">Genre:</label><br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="action" value="action" name="genre[]">
-                <label class="form-check-label" for="action">Action</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="comedy" value="comedy" name="genre[]">
-                <label class="form-check-label" for="comedy">Comedy</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="drama" value="drama" name="genre[]">
-                <label class="form-check-label" for="drama">Drama</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="horror" value="horror" name="genre[]">
-                <label class="form-check-label" for="horror">Horror</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="sci-fi" value="sci-fi" name="genre[]">
-                <label class="form-check-label" for="sci-fi">Sci-Fi</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="romance" value="romance" name="genre[]">
-                <label class="form-check-label" for="romance">Romance</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="adventure" value="adventure" name="genre[]">
-                <label class="form-check-label" for="adventure">Adventure</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="fantasy" value="fantasy" name="genre[]">
-                <label class="form-check-label" for="fantasy">Fantasy</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="thriller" value="thriller" name="genre[]">
-                <label class="form-check-label" for="thriller">Thriller</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="mystery" value="mystery" name="genre[]">
-                <label class="form-check-label" for="mystery">Mystery</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <select class="form-control" name="tipe">
-                <option value="Movie">Movie</option>
-                <option value="Series">Series</option>
-            </select>
-        </div>
+        
         <div class="form-group">
             <h3>1080</h3>
             <div class="input-group">
@@ -149,15 +97,7 @@
             </div>
         </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text  " id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="image">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-            </div>
-        </div>
+      
 
 
         <button type="submit" class="btn btn-primary">Submit</button>

@@ -100,6 +100,14 @@
                     case "post-select-update";
                         include "./post/showSelect.php";
                         break;
+                    case "add-episode";
+                        include "./post/episodeAdd.php";
+                        break;
+                    case "add-episode-query";
+                        include "./post/episodeQuery.php";
+                        break;
+
+
                     case "loginval";
                         include "./login/loginval.php";
                         break;

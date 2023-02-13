@@ -25,6 +25,7 @@
                                 <th scope="col">Title</th>
                                 <th scope="col">desc</th>
                                 <th scope="col">Date</th>
+                                <th scope="col">Tipe</th>
                                 <th scope="col">Created_at</th>
                                 <th scope="col">Genre</th>
                                 <th scope="col">Status</th>
@@ -56,6 +57,10 @@
                                     <td><?php echo $dataFilms['title']; ?></td>
                                     <td><?php echo $dataFilms['desc']; ?></td>
                                     <td><?php echo $dataFilms['date']; ?></td>
+                                    <td>
+                                        <?php echo $dataFilms['tipe']; ?>
+                                        <a href="?page=add-episode&id=<?php echo $dataFilms['film_id'] ?>"  style="display:<?php echo $dataFilms['tipe']==='Series'?'':'none';?>">Add Episode</a>
+                                    </td>
                                     <td><?php echo $dataFilms['created_at']; ?></td>
                                     <td><?php echo $dataFilms['name']; ?></td>
                                     <td>
@@ -74,12 +79,16 @@
                                     <td>
                                         <?php
                                         $id_film = $dataFilms['film_id'];
-                                        // loop link
-                                        $query2 = "SELECT * FROM link where film_id = '$id_film'";
+                                        $query2 = "SELECT * FROM link WHERE film_id = '$id_film'";
+                                        if($dataFilms['tipe'] === 'Series') {
+                                            $query2 = "SELECT l.*, e.episode FROM link l JOIN episode e ON l.episode_id = e.id_episode WHERE l.film_id = '$id_film'";
+                                        }
+                                        
+
                                         $result2 = mysqli_query($conn, $query2);
                                         ?>
                                         <?php while ($data = mysqli_fetch_assoc($result2)) {    ?>
-                                            <div><?php echo $data['quality'] ?></div>
+                                            <div><?php echo $dataFilms['tipe']==='Series'? "Episode " .$data['episode']. ' ' .$data['quality'] : $data['quality'] ?></div>
                                             <div class="wrapper-link-post" style="display: <?php echo $data['quality']? 'flex':  '' ?>;">
                                                 <a href="<?php echo $data['GD'] ?>" style="margin-right:5px ;padding:5px; display:<?php echo$data['GD']?'':'none' ?>" class="btn btn-primary " target="_blank">GD</a>
                                                 <a href="<?php echo $data['UTB'] ?>" style="margin-right:5px;padding:5px; display:<?php echo$data['UTB']?'':'none' ?>" class="btn btn-success" target="_blank">UTB</a>

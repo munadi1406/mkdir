@@ -1,0 +1,11 @@
+select l.*,e.* from link_episode le join link l on l.id_link = le.link_id join episode e on e.id_episode = le.episode_id where e.episode = 1;
+
+
+
+catatan 
+-menambahkan data series di form film
+-tambahkan episode dan ampil id episode 
+lalu tambahkan ke table link (idfilm dan id episode)
+lakukan query langsung di link
+
+

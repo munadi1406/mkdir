@@ -43,15 +43,15 @@ $post = new PostClass($conn);
 
         $start_from = ($current_page - 1) * $records_per_page;
 
-        $genre = $_GET['genre'];
+        $tipe = $_GET['tipe'];
 
-        $result = $post->postByGenre($genre);
+        $result = $post->postByTipe($tipe);
 
-        $total_records = mysqli_query($conn, "SELECT f.title, g.name FROM films f JOIN genre g ON f.film_id = g.id_films WHERE g.name LIKE '%".$genre."%' AND f.status = 'show' ");
-      
-        $total = mysqli_num_rows($total_records);
-        
-        $total_pages = ceil($total / $records_per_page);
+        $total_records = mysqli_query($conn, "SELECT * FROM films WHERE status = 'show' AND tipe = '" . $tipe . "' ");
+$num_rows = mysqli_num_rows($total_records);
+
+$total_pages = ceil($num_rows / $records_per_page);
+
         ?>
         <?php while ($data = mysqli_fetch_assoc($result)) {
 

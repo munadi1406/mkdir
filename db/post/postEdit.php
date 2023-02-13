@@ -1,36 +1,35 @@
-<?php 
-    include './../middleware/sessionCheck.php';
+<?php
+include './../middleware/sessionCheck.php';
 
-    $id_film = $_GET['id'];
+$id_film = $_GET['id'];
 
-    var_dump($id_film);
-
-
-    $query = " select f.* ,g.* ,u.*  from films f join genre g on f.film_id = g.id_films  join users u on f.id_users =  u.id_users where f.film_id = '". $id_film ."';";
-    $result = mysqli_query($conn, $query);
-    $datas = mysqli_fetch_assoc($result);
-
-    $query2= "SELECT * from link where film_id = '". $id_film ."'";
-    $datass  = mysqli_query($conn,$query2);
+var_dump($id_film);
 
 
-    var_dump($datas['name']);
+$query = " select f.* ,g.* ,u.*  from films f join genre g on f.film_id = g.id_films  join users u on f.id_users =  u.id_users where f.film_id = '" . $id_film . "';";
+$result = mysqli_query($conn, $query);
+$datas = mysqli_fetch_assoc($result);
 
-    $quality = array();
-    $linkGD = array();
-    $linkUTB = array();
-    $linkMG = array();
-    while ($data = mysqli_fetch_assoc($datass)){
-        // var_dump($data['quality']);
+$query2 = "SELECT * from link where film_id = '" . $id_film . "'";
+$datass  = mysqli_query($conn, $query2);
 
-        $quality[] = $data['quality'];
-        $linkGD[] = $data['GD'];
-        $linkUTB[] = $data['UTB'];
-        $linkMG[] = $data['MG'];
 
-    }
+var_dump($datas['name']);
 
-    // var_dump($datas);
+$quality = array();
+$linkGD = array();
+$linkUTB = array();
+$linkMG = array();
+while ($data = mysqli_fetch_assoc($datass)) {
+    // var_dump($data['quality']);
+
+    $quality[] = $data['quality'];
+    $linkGD[] = $data['GD'];
+    $linkUTB[] = $data['UTB'];
+    $linkMG[] = $data['MG'];
+}
+
+// var_dump($datas);
 ?>
 
 
@@ -43,11 +42,11 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Desc</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" name="desc"  value="<?php echo $datas['desc']?>">
+            <input type="text" class="form-control" id="exampleInputPassword1" name="desc" value="<?php echo $datas['desc'] ?>">
         </div>
         <div class="form-group">
             <label for="datepicker">Pilih Tanggal:</label>
-            <input type="date" class="form-control" id="datepicker" name="date" value="<?php echo $datas['date']?>">
+            <input type="date" class="form-control" id="datepicker" name="date" value="<?php echo $datas['date'] ?>">
         </div>
         <div class="form-group">
             <label for="genre">Genre:</label><br>
@@ -98,10 +97,14 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input type="checkbox" aria-label="Checkbox for following text input" value="1080" name="quality1080" <?php if(isset($quality[0])){ echo 'checked';}?>>
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="1080" name="quality1080" <?php if (isset($quality[0])) {
+                                                                                                                                    echo 'checked';
+                                                                                                                                } ?>>
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd1080" value="<?php if(isset($linkGD[0])){ echo $linkGD[0];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd1080" value="<?php if (isset($linkGD[0])) {
+                                                                                                                                                echo $linkGD[0];
+                                                                                                                                            } ?>">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -109,7 +112,9 @@
                         <input type="checkbox" aria-label="Checkbox for following text input" value="1080" name="quality1080">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb1080" value="<?php if(isset($linkUTB[0])){ echo $linkUTB[0];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb1080" value="<?php if (isset($linkUTB[0])) {
+                                                                                                                                                echo $linkUTB[0];
+                                                                                                                                            } ?>">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -117,7 +122,9 @@
                         <input type="checkbox" aria-label="Checkbox for following text input" value="1080" name="quality1080">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg1080" value="<?php if(isset($linkMG[0])){ echo $linkMG[0];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg1080" value="<?php if (isset($linkMG[0])) {
+                                                                                                                                                echo $linkMG[0];
+                                                                                                                                            } ?>">
             </div>
         </div>
         <div class="form-group">
@@ -125,10 +132,14 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input type="checkbox" aria-label="Checkbox for following text input" value="720" name="quality720" <?php if(isset($quality[1])){ echo 'checked';}?>>
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="720" name="quality720" <?php if (isset($quality[1])) {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd720" value="<?php if(isset($linkGD[1])){ echo $linkGD[1];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd720" value="<?php if (isset($linkGD[1])) {
+                                                                                                                                            echo $linkGD[1];
+                                                                                                                                        } ?>">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -136,7 +147,9 @@
                         <input type="checkbox" aria-label="Checkbox for following text input" value="720" name="quality720">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb720" value="<?php if(isset($linkUTB[1])){ echo $linkUTB[1];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb720" value="<?php if (isset($linkUTB[1])) {
+                                                                                                                                                echo $linkUTB[1];
+                                                                                                                                            } ?>">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -144,7 +157,9 @@
                         <input type="checkbox" aria-label="Checkbox for following text input" value="720" name="quality720">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg720" value="<?php if(isset($linkMG[1])){ echo $linkMG[1];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg720" value="<?php if (isset($linkMG[1])) {
+                                                                                                                                            echo $linkMG[1];
+                                                                                                                                        } ?>">
             </div>
         </div>
         <div class="form-group">
@@ -152,10 +167,14 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <input type="checkbox" aria-label="Checkbox for following text input" value="540" name="quality540" <?php if(isset($quality[2])){ echo 'checked';}?>>
+                        <input type="checkbox" aria-label="Checkbox for following text input" value="540" name="quality540" <?php if (isset($quality[2])) {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd540" value="<?php if(isset($linkGD[2])){ echo $linkGD[2];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link GD" name="gd540" value="<?php if (isset($linkGD[2])) {
+                                                                                                                                            echo $linkGD[2];
+                                                                                                                                        } ?>">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -163,7 +182,9 @@
                         <input type="checkbox" aria-label="Checkbox for following text input" value="540" name="quality540">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb540" value="<?php if(isset($linkUTB[2])){ echo $linkUTB[2];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link UTB" name="utb540" value="<?php if (isset($linkUTB[2])) {
+                                                                                                                                                echo $linkUTB[2];
+                                                                                                                                            } ?>">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -171,7 +192,9 @@
                         <input type="checkbox" aria-label="Checkbox for following text input" value="540" name="quality540">
                     </div>
                 </div>
-                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg540" value="<?php if(isset($linkMG[2])){ echo $linkMG[2];}?>">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Link MG" name="mg540" value="<?php if (isset($linkMG[2])) {
+                                                                                                                                            echo $linkMG[2];
+                                                                                                                                        } ?>">
             </div>
         </div>
         <img src="./images/<?php echo $datas['image'] ?>" alt="" width="100px">

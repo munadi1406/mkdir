@@ -18,6 +18,15 @@ body {
   margin: auto;
 }
 
+.banner-iklan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .wrapper-banner {
   height: -moz-max-content;
   height: max-content;
@@ -311,7 +320,7 @@ nav ul li:hover li:nth-child(10) {
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
 }
 .wrapper-detail .wrapper-img {
@@ -367,6 +376,8 @@ nav ul li:hover li:nth-child(10) {
   font-size: 16px;
   font-family: "Fira Sans", sans-serif;
   font-style: italic;
+  width: 100%;
+  word-wrap: break-word;
 }
 .wrapper-detail .wrapper-movie-link {
   width: 50%;

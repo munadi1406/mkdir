@@ -52,19 +52,24 @@
             $result2 = $post->linkPostById($dcry);
 
             $updateViews = $post->updateViews($dcry);
-            
-            ?>
-            <div class="container-link">
-                <?php while ($data = mysqli_fetch_assoc($result2)) { ?>
-                    <div class="wrapper-card-link" style="display: <?php if(!$data['quality']){echo 'none';} ?>;">
 
+            $getEpisode = $post->getEpisode($dcry);
+
+?>
+               
+
+            <div class="container-link">
+                <?php while ($dataLink = mysqli_fetch_assoc($result2)) { ?>
+                    <!-- <?php var_dump($dataLink) ?> -->
+                    <div class="wrapper-card-link" style="display: <?php if(!$dataLink['quality']){echo 'none';} ?>;">
                         <div class="wrapper-quality">
-                            <div><?php echo $data['quality'] ?></div>
+                            <div style="display:<?php echo $data['tipe']=== 'Series'?'':'none'; ?>"><?php echo $data['tipe'] === "Series"? 'Episode '.$dataLink['episode']:''; ?></div>
+                            <div><?php echo $dataLink['quality'] ?></div>
                         </div>
                         <div class="wrapper-link-quality">
-                            <a href="<?php echo $data['GD'] ?>" target="_blank"  style="display: <?php if(!$data['GD']){echo 'none !';} ?>;">GD</a>
-                            <a href="<?php echo $data['UTB'] ?>" target="_blank" style="display:  <?php if(!$data['UTB']){echo 'none';} ?>;">UTB</a>
-                            <a href="<?php echo $data['MG'] ?>" target="_blank" style="display: <?php if(!$data['MG']){echo 'none';} ?>;">MG</a>
+                            <a href="<?php echo $dataLink['GD'] ?>" target="_blank"  style="display: <?php if(!$dataLink['GD']){echo 'none !';} ?>;">GD</a>
+                            <a href="<?php echo $dataLink['UTB'] ?>" target="_blank" style="display:  <?php if(!$dataLink['UTB']){echo 'none';} ?>;">UTB</a>
+                            <a href="<?php echo $dataLink['MG'] ?>" target="_blank" style="display: <?php if(!$dataLink['MG']){echo 'none';} ?>;">MG</a>
                         </div>
                     </div>
                 <?php } ?>
